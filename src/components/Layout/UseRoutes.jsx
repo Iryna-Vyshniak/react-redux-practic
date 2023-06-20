@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import CounterPage from '../../pages/CounterPage';
 import HomePage from '../../pages/HomePage';
+import ToDoPage from '../../pages/ToDoPage';
 
 const UseRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const UseRoutes = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/counter' element={<CounterPage />} />
+          <Route path='/todo' element={<ToDoPage />} />
         </Route>
       </Routes>
     </Suspense>
