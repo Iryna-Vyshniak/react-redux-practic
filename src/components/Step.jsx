@@ -1,19 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { setStep } from '../../store/counter/actions';
 
 const Step = () => {
   const dispatch = useDispatch();
-  const { step } = useSelector((state) => state);
+  const { step } = useSelector((state) => state.counter);
   //console.log(step);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { value } = e.target.elements.step;
-    dispatch({ type: 'setStep', payload: Number(value) });
+    // dispatch({ type: 'setStep', payload: Number(value) });
+    dispatch(setStep(Number(value)));
   };
 
   return (
     <form
-      className='flex justify-center items-center mt-2 mx-auto max-w-[360px] w-full h-[44px]'
+      className='flex justify-center items-center mt-2 mb-40 mx-auto max-w-[360px] w-full h-[44px]'
       role='search'
       onSubmit={handleSubmit}
     >
