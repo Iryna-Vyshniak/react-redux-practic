@@ -3,7 +3,7 @@ import { SiDeepnote } from 'react-icons/si';
 
 const Header = () => {
   const activeLink =
-    'cursor-pointer py-3 text-sm font-semibold text-black-700 border-b-[3px] border-b-blue-700';
+    'cursor-pointer py-3 text-sm font-semibold text-black-700 border-b-[3px] border-b-blue-700 transition duration-200 ease-in-out';
 
   return (
     <div className='sticky top-0 z-40 bg-white border-b shadow-sm'>
@@ -37,6 +37,18 @@ const Header = () => {
                 }
               >
                 Counter
+              </NavLink>
+            </li>
+            <li className='py-3'>
+              <NavLink
+                to='/todo'
+                className={({ isActive }) =>
+                  isActive
+                    ? activeLink
+                    : 'cursor-pointer px-3 text-sm font-semibold text-slate-600 border-b-[3px] border-b-transparent'
+                }
+              >
+                ToDo
               </NavLink>
             </li>
           </ul>
