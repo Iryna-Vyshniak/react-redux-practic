@@ -4,7 +4,7 @@ import { ToDoList } from '../components/ToDo/ToDoList';
 
 const ToDoPage = () => {
   return (
-    <div className='grid gap-4 mx-auto px-3 py-3 w-full'>
+    <div className='grid gap-4 mx-auto px-3 py-3 w-full max-w-[1200px]'>
       <ToDoBar />
       <ToDoForm />
       <ToDoList />

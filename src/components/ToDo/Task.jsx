@@ -10,7 +10,7 @@ export const Task = ({ task }) => {
   const handleToggle = () => dispatch(toggleCompleted(task.id));
 
   return (
-    <div className='flex items-center space-x-4 max-w-6xl mx-auto px-3 py-3'>
+    <div className='flex items-center justify-center space-x-4 max-w-[1200px] w-full mx-auto px-3 py-3 border-t border-gray-400'>
       <input
         type='checkbox'
         className='flex justify-center items-center rounded w-[24px] h-[24px] cursor-pointer'

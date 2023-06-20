@@ -21,9 +21,9 @@ export const ToDoList = () => {
   const visibleTodo = getVisibleTodo(todo, statusFilter);
 
   return (
-    <ul className='list-none'>
+    <ul className='flex flex-col items-center justify-center list-none'>
       {visibleTodo.map((task) => (
-        <li className='border-t border-gray-400' key={task.id}>
+        <li className='max-w-[1200px] w-full' key={task.id}>
           <Task task={task} />
         </li>
       ))}

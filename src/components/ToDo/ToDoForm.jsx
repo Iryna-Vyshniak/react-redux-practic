@@ -14,7 +14,10 @@ export const ToDoForm = () => {
   };
 
   return (
-    <form className='flex items-center space-x-4 w-full max-w-[1200px]' onSubmit={handleSubmit}>
+    <form
+      className='flex items-center justify-center space-x-4 w-full max-w-[1200px]'
+      onSubmit={handleSubmit}
+    >
       <input
         className='flex-grow px-2 py-0 w-full h-[44px] rounded-md border-blue-600 focus:border-blue-700'
         type='text'
