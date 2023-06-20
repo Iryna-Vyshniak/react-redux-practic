@@ -1,4 +1,4 @@
-import Footer from './components/footer';
+import Footer from './components/Footer';
 
 function App() {
   //const [count, setCount] = useState(0);
