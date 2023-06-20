@@ -24,7 +24,7 @@ const CounterPage = () => {
   return (
     <>
       <Step />
-      <section className='flex-col items-center justify-center w-full'>
+      <section className='flex-col items-center justify-center w-full px-3 py-3'>
         <h3 className='font-semibold text-3xl text-red-700 text-center mt-6'>{total}</h3>
         <div className='flex items-center justify-center w-full'>
           <button
