@@ -1,21 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { BsPlusCircle } from 'react-icons/bs';
 import { SlMinus } from 'react-icons/sl';
+import Step from '../components/Step';
 
 const CounterPage = () => {
   //const [count, setCount] = useState(0);
-  const total = useSelector((state) => state.total);
+  //const total = useSelector((state) => state.total);
+  const { total, step } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
   const setCountIncr = () => {
-    dispatch({ type: 'increment', payload: 1 });
+    dispatch({ type: 'increment', payload: step });
   };
   const setCountDecr = () => {
-    dispatch({ type: 'decrement', payload: 1 });
+    dispatch({ type: 'decrement', payload: step });
   };
 
   return (
     <>
+      <Step />
       <h3 className='font-semibold text-3xl text-red-700 text-center mt-6'>{total}</h3>
       <div className='flex items-center justify-center w-full'>
         <button
