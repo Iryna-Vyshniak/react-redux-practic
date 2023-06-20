@@ -25,7 +25,7 @@ const Step = () => {
         defaultValue={step}
       />
       <button
-        className='flex justify-center items-center ml-2 px-2 py-2 max-w-[350px] w-full h-[44px] bg-red-700 text-white rounded-md shadow-lg transition duration-200 ease-in-out hover:bg-red-600 hover:shadow-md shadow-emerald-50 active:scale-0'
+        className='flex justify-center items-center ml-2 px-2 py-2 max-w-[350px] w-full h-[44px] bg-red-700 text-white rounded-md shadow-lg transition duration-200 ease-in-out hover:bg-red-600 hover:shadow-md shadow-emerald-50'
         type='submit'
       >
         Set Step
