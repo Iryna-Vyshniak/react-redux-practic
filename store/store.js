@@ -12,12 +12,17 @@ const reducer = (state, action) => {
         ...state,
         total: state.total - action.payload,
       };
+    case 'setStep':
+      return {
+        ...state,
+        step: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export const store = createStore(reducer, { total: 0, users: [] });
+export const store = createStore(reducer, { total: 0, step: 1 });
 
 //console.log(store.getState()); // {total: 0} => useSelector(state => state.total)
 // store.dispatch({type: 'increment', payload: 1}); => useDispatch(action)
