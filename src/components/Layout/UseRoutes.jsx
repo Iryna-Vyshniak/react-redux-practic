@@ -4,6 +4,7 @@ import Layout from './Layout';
 import CounterPage from '../../pages/CounterPage';
 import HomePage from '../../pages/HomePage';
 import ToDoPage from '../../pages/ToDoPage';
+import NotFound from '../../pages/NotFound';
 
 const UseRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const UseRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path='/counter' element={<CounterPage />} />
           <Route path='/todo' element={<ToDoPage />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
