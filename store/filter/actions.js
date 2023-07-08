@@ -1,8 +1,10 @@
-import { SET_STATUS_FILTER } from './types';
+import { createAction } from '@reduxjs/toolkit';
 
-export const setStatusFilter = (value) => {
-  return {
-    type: SET_STATUS_FILTER,
-    payload: value,
-  };
-};
+export const setStatusFilter = createAction('SET_STATUS_FILTER');
+
+// export const setStatusFilter = (value) => {
+//   return {
+//     type: SET_STATUS_FILTER,
+//     payload: value,
+//   };
+// };
