@@ -2,6 +2,8 @@ import { createReducer } from '@reduxjs/toolkit';
 import { increment, decrement, setStep } from './actions';
 import { counterInitialState } from './initialState';
 
+//  another variant - use createSlice witout actions and createReducrer
+
 export const counterReducer = createReducer(counterInitialState, {
   // [increment] => викликаємо функцію в [], без [] - ключ-назва
   [increment]: (state, action) => ({
