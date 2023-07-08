@@ -9,6 +9,13 @@ export const reducer = combineReducers({
   filters: filtersReducer,
 });
 
+// or
+// export const reducer = {
+//   counter: counterReducer,
+//   todo: todoReducer,
+//   filters: filtersReducer,
+// };
+
 // const counterReducer = (state = initialState.counter, action) => {
 //   switch (action.type) {
 //     case INCREMENT:
