@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 // import { counterReducer } from './counter/counterReducer';
 import { counterReducer } from './counter/counterSlice';
-import { todoReducer } from './todo/todoReducer';
-import { filtersReducer } from './filter/filterReducer';
+//  import { todoReducer } from './todo/todoReducer';
+import { todoReducer } from './todo/todoSlice';
+//  import { filtersReducer } from './filter/filterReducer';
+import { filtersReducer } from './filter/filterSlice';
 
 export const reducer = combineReducers({
   counter: counterReducer,
