@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
-import { addTask } from '../../../store/todo/actions';
+//  import { addTask } from '../../../store/todo/actions';
+import { addTask } from '../../../store/todo/todoSlice';
 import { Button } from './Button';
 
 export const ToDoForm = () => {
