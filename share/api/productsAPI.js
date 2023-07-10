@@ -2,6 +2,7 @@
 // https://simple-products-backend.onrender.com/api/products
 const products = [
   {
+    id: 1,
     name: 'Brown eggs',
     type: 'dairy',
     description: 'Raw organic brown eggs in a basket',
@@ -9,6 +10,7 @@ const products = [
     price: 28.1,
   },
   {
+    id: 2,
     name: 'Sweet fresh stawberry',
     type: 'fruit',
     description: 'Sweet fresh stawberry on the wooden table',
@@ -16,6 +18,7 @@ const products = [
     price: 29.45,
   },
   {
+    id: 3,
     name: 'Asparagus',
     type: 'vegetable',
     description: 'Asparagus with ham on the wooden table',
@@ -23,6 +26,7 @@ const products = [
     price: 18.95,
   },
   {
+    id: 4,
     name: 'Green smoothie',
     type: 'dairy',
     description:
@@ -31,6 +35,7 @@ const products = [
     price: 17.68,
   },
   {
+    id: 5,
     name: 'Raw legums',
     type: 'vegetable',
     description: 'Raw legums on the wooden table',
@@ -38,6 +43,7 @@ const products = [
     price: 17.11,
   },
   {
+    id: 6,
     name: 'Baking cake',
     type: 'dairy',
     description:
@@ -46,6 +52,7 @@ const products = [
     price: 11.14,
   },
   {
+    id: 7,
     name: 'Pesto with basil',
     type: 'vegetable',
     description: 'Italian traditional pesto with basil, chesse and oil',
@@ -53,6 +60,7 @@ const products = [
     price: 18.19,
   },
   {
+    id: 8,
     name: 'Hazelnut in black ceramic bowl',
     type: 'vegetable',
     description:
@@ -61,6 +69,7 @@ const products = [
     price: 27.35,
   },
   {
+    id: 9,
     name: 'Fresh stawberry',
     type: 'fruit',
     description: 'Sweet fresh stawberry on the wooden table',
@@ -68,6 +77,7 @@ const products = [
     price: 28.59,
   },
   {
+    id: 10,
     name: 'Lemon and salt',
     type: 'fruit',
     description: 'Rosemary, lemon and salt on the table',
@@ -81,5 +91,6 @@ export const getProducts = () => {
 };
 
 export const getProductById = (productId) => {
-  return products.find((product) => product.id === productId);
+  const id = parseInt(productId, 10);
+  return products.find((product) => product.id === id);
 };
