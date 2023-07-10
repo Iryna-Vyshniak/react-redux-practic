@@ -43,7 +43,7 @@ const CreateProductsPage = () => {
           value={name}
           placeholder='Name'
           maxLength='37'
-          minLength='10'
+          minLength='3'
           required
           onChange={onChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6'
@@ -71,11 +71,10 @@ const CreateProductsPage = () => {
 
         <p className='text-lg font-semibold'>Image</p>
         <input
-          type='text'
+          type='url'
           id='url'
           value={url}
           placeholder='Add url'
-          maxLength='37'
           minLength='10'
           required
           onChange={onChange}
