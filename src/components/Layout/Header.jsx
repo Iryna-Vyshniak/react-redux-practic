@@ -29,6 +29,18 @@ const Header = () => {
             </li>
             <li className='py-3'>
               <NavLink
+                to='/create-products'
+                className={({ isActive }) =>
+                  isActive
+                    ? activeLink
+                    : 'cursor-pointer px-3 text-sm font-semibold text-slate-400 border-b-[3px] border-b-transparent'
+                }
+              >
+                Add Products
+              </NavLink>
+            </li>
+            <li className='py-3'>
+              <NavLink
                 to='/counter'
                 className={({ isActive }) =>
                   isActive
