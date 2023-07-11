@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SiDeepnote } from 'react-icons/si';
 import { AuthNav } from './AuthNav';
 import { UserNav } from './UserNav';
