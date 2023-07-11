@@ -7,6 +7,9 @@ import ToDoPage from '../../pages/ToDoPage';
 import NotFound from '../../pages/NotFound';
 import CreateProductsPage from '../../pages/CreateProductsPage';
 import ProductDetailsPage from '../../pages/ProductDetailsPage';
+import ProductPage from '../../pages/ProductPage';
+import RegisterPage from '../../pages/RegisterPage';
+import { LoginPage } from '../../pages/LoginPage';
 
 const UseRoutes = () => {
   return (
@@ -14,6 +17,9 @@ const UseRoutes = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path='/signup' element={<RegisterPage />} />
+          <Route path='/signin' element={<LoginPage />} />
+          <Route path='/products' element={<ProductPage />} />
           <Route path='/:id' element={<ProductDetailsPage />} />
           <Route path='/create-products' element={<CreateProductsPage />} />
           <Route path='/counter' element={<CounterPage />} />
