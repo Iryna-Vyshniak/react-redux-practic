@@ -12,6 +12,7 @@
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "flowbite": "^1.6.6",
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
