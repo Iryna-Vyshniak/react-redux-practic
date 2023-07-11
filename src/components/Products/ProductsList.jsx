@@ -8,7 +8,7 @@ export const ProductsList = ({ products }) => {
       {products.map((product) => (
         <li
           key={product.id}
-          className='relative bg-white flex flex-col justify-between items-center m-[10px] shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-200 ease-in-out'
+          className='relative bg-white flex flex-col justify-between items-center m-[10px] p-4 shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-200 ease-in-out'
         >
           <Link to={`${product.id}`} state={{ from: location }}>
             <img
