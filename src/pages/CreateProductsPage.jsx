@@ -46,7 +46,7 @@ const CreateProductsPage = () => {
           minLength='3'
           required
           onChange={onChange}
-          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6'
+          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
 
         <p className='text-lg font-semibold'>Type</p>
@@ -55,7 +55,7 @@ const CreateProductsPage = () => {
           value={type}
           onChange={onSelectChange}
           options={typeProducts}
-          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out mb-6'
+          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out mb-6 shadow-lg shadow-red-100'
         />
 
         <p className='text-lg font-semibold'>Description</p>
@@ -66,7 +66,7 @@ const CreateProductsPage = () => {
           placeholder='Description'
           required
           onChange={onChange}
-          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6'
+          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
 
         <p className='text-lg font-semibold'>Image</p>
@@ -78,7 +78,7 @@ const CreateProductsPage = () => {
           minLength='10'
           required
           onChange={onChange}
-          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6'
+          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
         <div>
           <p className='text-lg mt-6 font-semibold'>Price</p>
@@ -91,14 +91,14 @@ const CreateProductsPage = () => {
               max='400000000'
               required
               onChange={onChange}
-              className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6'
+              className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
             />
           </div>
         </div>
 
         <button
           type='submit'
-          className='mb-6 w-full px-7 py-3 bg-blue-700 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-200 ease-in-out'
+          className='mb-6 w-full px-7 py-3 bg-blue-700 text-white font-medium text-sm uppercase shadow-lg rounded  hover:bg-blue-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-200 ease-in-out'
         >
           Create product
         </button>
