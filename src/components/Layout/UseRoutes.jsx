@@ -20,7 +20,7 @@ const UseRoutes = () => {
           <Route path='/signup' element={<RegisterPage />} />
           <Route path='/signin' element={<LoginPage />} />
           <Route path='/products' element={<ProductPage />} />
-          <Route path='/:id' element={<ProductDetailsPage />} />
+          <Route path='/products/:id' element={<ProductDetailsPage />} />
           <Route path='/create-products' element={<CreateProductsPage />} />
           <Route path='/counter' element={<CounterPage />} />
           <Route path='/todo' element={<ToDoPage />} />
