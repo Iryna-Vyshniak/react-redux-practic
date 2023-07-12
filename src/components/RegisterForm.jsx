@@ -1,17 +1,23 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useState } from 'react';
+import useForm from '../../share/hooks/useForm';
 
-const RegisterForm = () => {
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+};
+
+const RegisterForm = ({ onSubmit }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useDispatch();
+  const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch();
-    form.reset();
+  const { name, email, password } = state;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
   };
 
   return (
@@ -21,6 +27,8 @@ const RegisterForm = () => {
         <input
           type='text'
           name='name'
+          value={name}
+          onChange={handleInputChange}
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
       </label>
@@ -29,6 +37,8 @@ const RegisterForm = () => {
         <input
           type='email'
           name='email'
+          value={email}
+          onChange={handleInputChange}
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
       </label>
@@ -37,6 +47,8 @@ const RegisterForm = () => {
         <input
           type={showPassword ? 'text' : 'password'}
           name='password'
+          value={password}
+          onChange={handleInputChange}
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
         {showPassword ? (
