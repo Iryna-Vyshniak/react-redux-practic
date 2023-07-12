@@ -15,3 +15,8 @@ html::-webkit-scrollbar {
 html {
   scrollbar-width: none;
 }
+
+input[type='file']::file-selector-button {
+  background-color: #1f56db;
+  color: #ffffff;
+}
