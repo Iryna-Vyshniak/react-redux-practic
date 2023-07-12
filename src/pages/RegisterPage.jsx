@@ -1,6 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import RegisterForm from '../components/RegisterForm';
+import { signUp } from '../../share/api/auth-service';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
+  const onRegister = async (data) => {
+    // console.log(data);
+    try {
+      await signUp(data);
+      navigate('/signin');
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <section>
       <div className='flex justify-center items-center flex-wrap px-6 py-12 max-w-6xl mx-auto '>
@@ -12,7 +26,7 @@ const RegisterPage = () => {
           />
         </div>
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <RegisterForm />
+          <RegisterForm onSubmit={onRegister} />
         </div>
       </div>
     </section>
