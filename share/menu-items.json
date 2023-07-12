@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "text": "Home",
+    "link": "/",
+    "private": true
+  },
+  {
+    "id": "2",
+    "text": " Products",
+    "link": "/products",
+    "private": true
+  },
+  {
+    "id": "3",
+    "text": "Add Products",
+    "link": "/create-products",
+    "private": true
+  },
+  {
+    "id": "4",
+    "text": "Counter",
+    "link": "/counter",
+    "private": true
+  },
+  {
+    "id": "5",
+    "text": "ToDo",
+    "link": "/todo",
+    "private": true
+  }
+]
