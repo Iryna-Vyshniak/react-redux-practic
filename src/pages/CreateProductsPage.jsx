@@ -1,31 +1,46 @@
 import { useState } from 'react';
 import Select from 'react-select';
 import typeProducts from '../../share/typeProducts.json';
+import useForm from '../../share/hooks/useForm';
+import { useDispatch } from 'react-redux';
+
+const initialState = {
+  name: '',
+  type: null,
+  description: '',
+  price: 0,
+  favorite: false,
+};
 
 const CreateProductsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    type: null,
-    description: '',
-    url: '',
-    price: 0,
-  });
+  const dispatch = useDispatch();
 
-  const { name, type, description, url, price } = formData;
+  const onSubmit = (data) => {
+    dispatch();
+  };
 
-  function onChange(e) {
-    setFormData((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
-  }
+  const { state, onChange, reset } = useForm({ initialState, onSubmit });
 
-  function onSelectChange(option) {
-    setFormData((prevState) => ({ ...prevState, type: option }));
-  }
+  const { name, type, description, price, favorite } = state;
 
-  async function onSubmit(e) {
+  const handleInputChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+    onChange(name, newValue);
+  };
+
+  const handleSelectChange = (option) => {
+    onChange('type', option);
+  };
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
+    const data = new FormData(e.currentTarget);
+    data.set('favorite', state.favorite);
+    onSubmit(data);
+    reset();
   }
 
   if (isLoading) {
@@ -35,25 +50,25 @@ const CreateProductsPage = () => {
   return (
     <main className='max-w-md px-2 mx-auto '>
       <h1 className='text-3xl text-blue-700 text-center mt-6 mb-6 font-bold'>Add Product</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <p className='text-lg font-semibold'>Name</p>
         <input
           type='text'
-          id='name'
+          name='name'
           value={name}
           placeholder='Name'
           maxLength='37'
           minLength='3'
           required
-          onChange={onChange}
+          onChange={handleInputChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
 
         <p className='text-lg font-semibold'>Type</p>
         <Select
-          id='type'
+          name='type'
           value={type}
-          onChange={onSelectChange}
+          onChange={handleSelectChange}
           options={typeProducts}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out mb-6 shadow-lg shadow-red-100'
         />
@@ -61,40 +76,48 @@ const CreateProductsPage = () => {
         <p className='text-lg font-semibold'>Description</p>
         <textarea
           type='text'
-          id='description'
+          name='description'
           value={description}
           placeholder='Description'
           required
-          onChange={onChange}
+          onChange={handleInputChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
 
         <p className='text-lg font-semibold'>Image</p>
         <input
-          type='url'
-          id='url'
-          value={url}
-          placeholder='Add url'
+          type='file'
+          name='photo'
+          placeholder='Add photo'
           minLength='10'
           required
-          onChange={onChange}
+          onChange={handleInputChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
         />
-        <div>
-          <p className='text-lg mt-6 font-semibold'>Price</p>
-          <div className='flex w-full justify-center items-center space-x-6'>
-            <input
-              type='number'
-              id='price'
-              value={price}
-              min='1'
-              max='400000000'
-              required
-              onChange={onChange}
-              className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
-            />
-          </div>
-        </div>
+        <p className='text-lg mt-6 font-semibold'>Favorite</p>
+        <input
+          type='checkbox'
+          name='favorite'
+          checked={favorite}
+          value={price}
+          min='1'
+          max='400000000'
+          required
+          onChange={handleInputChange}
+          className='form-checkbox mb-6  w-8 h-8 px-4 py-2 text-lg text-blue-600 border border-gray-300 rounded transition duration-200 ease-in-out shadow-lg shadow-red-100'
+        />
+
+        <p className='text-lg mt-6 font-semibold'>Price</p>
+        <input
+          type='number'
+          name='price'
+          value={price}
+          min='1'
+          max='400000000'
+          required
+          onChange={handleInputChange}
+          className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
+        />
 
         <button
           type='submit'
