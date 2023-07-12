@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SiDeepnote } from 'react-icons/si';
-import { AuthNav } from './AuthNav';
-import { UserNav } from './UserNav';
+import Navbar from './Navbar';
 
 const Header = () => {
   return (
@@ -13,8 +12,7 @@ const Header = () => {
           </Link>
         </div>
         <nav className='flex justify-between items-center px-3 max-w-6xl mx-auto'>
-          <AuthNav />
-          <UserNav />
+          <Navbar />
         </nav>
       </header>
     </div>
