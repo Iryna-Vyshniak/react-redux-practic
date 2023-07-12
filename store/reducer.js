@@ -5,8 +5,10 @@ import { counterReducer } from './counter/counterSlice';
 import { todoReducer } from './todo/todoSlice';
 //  import { filtersReducer } from './filter/filterReducer';
 import { filtersReducer } from './filter/filterSlice';
+import { authReducer } from './auth/slice';
 
 export const reducer = combineReducers({
+  auth: authReducer,
   counter: counterReducer,
   todo: todoReducer,
   filters: filtersReducer,
