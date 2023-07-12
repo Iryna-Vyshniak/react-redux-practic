@@ -1,18 +1,22 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useState } from 'react';
+import useForm from '../../share/hooks/useForm';
 
-const LoginForm = () => {
+const initialState = {
+  email: '',
+  password: '',
+};
+
+const LoginForm = ({ onSubmit }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
 
-  const dispatch = useDispatch();
+  const { email, password } = state;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch();
-    form.reset();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
   };
 
   return (
@@ -22,6 +26,9 @@ const LoginForm = () => {
         <input
           type='email'
           name='email'
+          value={email}
+          required
+          onChange={handleInputChange}
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
       </label>
@@ -30,6 +37,9 @@ const LoginForm = () => {
         <input
           type={showPassword ? 'text' : 'password'}
           name='password'
+          value={password}
+          required
+          onChange={handleInputChange}
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
         {showPassword ? (
