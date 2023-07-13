@@ -18,12 +18,12 @@ const UserRoutes = () => {
     <Suspense fallback={<h2>Loading...</h2>}>
       <Routes>
         <Route path='/' element={<Layout />}>
+          <Route index element={<HomePage />} />
           <Route element={<PublicRoute />}>
             <Route path='/signup' element={<RegisterPage />} />
             <Route path='/signin' element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route index element={<HomePage />} />
             <Route path='/products' element={<ProductPage />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
             <Route path='/create-products' element={<CreateProductsPage />} />
