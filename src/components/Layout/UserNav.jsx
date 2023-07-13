@@ -8,9 +8,20 @@ export const UserNav = () => {
 
   const dispatch = useDispatch();
 
+  const onLogout = () => {
+    dispatch(logOutThunk());
+  };
+
   return (
-    <div>
-      {user.name}, <button onClick={() => dispatch(logOutThunk)}>LogOut</button>
+    <div className='flex space-x-1 items-center'>
+      <img src={user.avatarUrl} alt='avatar' className='w-6 h-6 rounded-full' />
+      <span className='mr-2 text-lime-600 font-semibold'>{user.name},</span>
+      <button
+        onClick={onLogout}
+        className='px-2 h-8 bg-lime-600 text-white rounded hover:bg-lime-700 transition duration-150 ease-in-out'
+      >
+        LogOut
+      </button>
     </div>
   );
 };
