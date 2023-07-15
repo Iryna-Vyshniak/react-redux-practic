@@ -6,9 +6,11 @@ import { todoReducer } from './todo/todoSlice';
 //  import { filtersReducer } from './filter/filterReducer';
 import { filtersReducer } from './filter/filterSlice';
 import { authReducer } from './auth/slice';
+import { productsReducer } from './products/slice';
 
 export const reducer = combineReducers({
   auth: authReducer,
+  products: productsReducer,
   counter: counterReducer,
   todo: todoReducer,
   filters: filtersReducer,
