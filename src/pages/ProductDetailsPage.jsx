@@ -1,5 +1,5 @@
 import { BackLink } from '../components/BackLink';
-import { getProductById } from '../../share/api/productsAPI';
+import { getProductById } from '../../share/api/products-service';
 import { useLocation, useParams } from 'react-router-dom';
 
 const ProductDetailsPage = () => {
