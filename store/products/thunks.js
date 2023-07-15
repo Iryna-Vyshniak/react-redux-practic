@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getAllProducts } from '../../share/api/productsAPI';
-import { createProduct } from '../../share/api/productsAPI';
-import { getProductById } from '../../share/api/productsAPI';
+import { getAllProducts } from '../../share/api/products-service';
+import { createProduct } from '../../share/api/products-service';
+import { getProductById } from '../../share/api/products-service';
 
 export const getAllProductsThunk = createAsyncThunk(
   'products/getAll',
