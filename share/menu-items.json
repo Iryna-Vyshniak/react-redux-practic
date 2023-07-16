@@ -13,18 +13,12 @@
   },
   {
     "id": "3",
-    "text": "Add Products",
-    "link": "/create-products",
-    "private": true
-  },
-  {
-    "id": "4",
     "text": "Counter",
     "link": "/counter",
     "private": true
   },
   {
-    "id": "5",
+    "id": "4",
     "text": "ToDo",
     "link": "/todo",
     "private": true
