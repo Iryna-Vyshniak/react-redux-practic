@@ -1,35 +1,38 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://simple-products-backend.onrender.com/api',
+  baseURL: `http://localhost:3500/api`,
+  // baseURL: 'https://simple-products-backend.onrender.com/api',
 });
 
 export const getAllProducts = async () => {
   try {
-    const data = await instance.get('/products');
-    return data;
+    const response = await instance.get('/products');
+    console.log(response);
+    console.log(response.data);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-export const createProduct = async (body) => {
+export const createProduct = async (data) => {
   try {
-    const data = await instance.post('/products', body);
-    console.log(data);
-    return data;
+    const response = await instance.post('/products', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log(response);
+    console.log(response.data);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-export const getProductById = async (id) => {
-  try {
-    const data = await instance.get(`/products/${id}`);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
+export const getProductById = (id) => {
+  return instance.get(`/products/${id}`);
 };
 
 export default instance;
