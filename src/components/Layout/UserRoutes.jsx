@@ -16,23 +16,24 @@ import PublicRoute from './PublicRoute';
 const UserRoutes = () => {
   return (
     <Suspense fallback={<h2>Loading...</h2>}>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route element={<PublicRoute />}>
-            <Route path='/signup' element={<RegisterPage />} />
-            <Route path='/signin' element={<LoginPage />} />
-          </Route>
-          <Route element={<PrivateRoute />}>
-            <Route path='/products' element={<ProductPage />} />
-            <Route path='/products/:id' element={<ProductDetailsPage />} />
-            <Route path='/create-products' element={<CreateProductsPage />} />
-            <Route path='/counter' element={<CounterPage />} />
-            <Route path='/todo' element={<ToDoPage />} />
-            <Route path='*' element={<NotFound />} />
-          </Route>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route element={<PublicRoute />}>
+          <Route path='/signup' element={<RegisterPage />} />
+          <Route path='/signin' element={<LoginPage />} />
         </Route>
-      </Routes>
+        <Route element={<PrivateRoute />}>
+          <Route path='/list-products' element={<ProductPage />}>
+            <Route path='add-product' element={<CreateProductsPage />} />
+          </Route>
+          <Route path='/list-products/:id' element={<ProductDetailsPage />} />
+          <Route path='/counter' element={<CounterPage />} />
+          <Route path='/todo' element={<ToDoPage />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+      </Route>
+    </Routes>
     </Suspense>
   );
 };
