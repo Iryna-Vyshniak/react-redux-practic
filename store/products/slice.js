@@ -22,13 +22,19 @@ const handlePending = (state) => {
   state.error = null;
 };
 
-const handleFulfilled = (state, { payload }) => {
+const handleFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.items = payload;
+  state.items = action.payload;
 };
 
 const handleFulfilledAdd = (state, { payload }) => {
+  // return {
+  //   ...state,
+  //   isLoading: true,
+  //   error: null,
+  //   items: [...state.items, payload],
+  // };
   state.isLoading = true;
   state.error = null;
   state.items.push(payload);
