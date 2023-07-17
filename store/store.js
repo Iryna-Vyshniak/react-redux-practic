@@ -16,6 +16,7 @@ import { reducer } from './reducer';
 const persistConfig = {
   key: 'auth',
   storage,
+  // whitelist: ['token'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
