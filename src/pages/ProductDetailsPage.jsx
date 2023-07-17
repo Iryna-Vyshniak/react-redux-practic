@@ -13,7 +13,7 @@ const ProductDetailsPage = () => {
     <main>
       <BackLink to={backLinkHref}>Back to products</BackLink>
       <img
-        src={product.url}
+        src={`http://localhost:3500/${product.poster}`}
         alt={product.name}
         className='h-[360px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
         loading='lazy'
