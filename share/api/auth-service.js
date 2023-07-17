@@ -1,22 +1,23 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: `https://simple-products-backend.onrender.com/api`,
+  baseURL: `http://localhost:3500/api`,
+  // baseURL: `https://simple-products-backend.onrender.com/api`,
 });
 
-const setToken = (token) => {
+export const setToken = (token) => {
   return (instance.defaults.headers.authorization = `Bearer ${token}`);
 };
 
 export const dellToken = () => {
-  instance.defaults.headers.authorization = '';
+  return (instance.defaults.headers.authorization = '');
 };
 
 //  register
 export const signUp = async (body) => {
   // console.log(body);
   const { data: result } = await instance.post('/auth/signup', body);
-  console.log('REGISTER RESULT', result);
+  // console.log('REGISTER RESULT', result);
   return result;
 };
 
@@ -42,10 +43,15 @@ export const logOut = async () => {
 };
 
 // get current
+// export const getProfile = () => {
+//   const response = instance.get('/auth/current');
+//   return response.data;
+// };
 export const getProfile = async (token) => {
   try {
     setToken(token);
     const { data } = await instance.get('/auth/current');
+    console.log('CURRENT USER', data);
     return data;
   } catch (error) {
     dellToken();
