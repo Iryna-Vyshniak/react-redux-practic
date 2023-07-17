@@ -8,7 +8,7 @@
   {
     "id": "2",
     "text": " Products",
-    "link": "/products",
+    "link": "/list-products",
     "private": true
   },
   {
