@@ -1,8 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import Select from 'react-select';
 import typeProducts from '../../share/typeProducts.json';
 import useForm from '../../share/hooks/useForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from '../../store/products/selectors';
+import { addProductThunk } from '../../store/products/thunks';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -13,34 +16,53 @@ const initialState = {
 };
 
 const CreateProductsPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    dispatch();
-  };
+  // const onSubmit = (data) => {
+  //   // console.log('submit', data);
+  //   // for (const [key, value] of data.entries()) {
+  //   //   console.log(`${key}: ${value}`);
+  //   // }
+  //   dispatch(addProductThunk(data));
+  // };
 
-  const { state, onChange, reset } = useForm({ initialState, onSubmit });
+  const { state, handleChange, reset } = useForm({ initialState });
 
   const { name, type, description, price, favorite } = state;
 
   const handleInputChange = (e) => {
     const { name, value, checked, type } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
-    onChange(name, newValue);
+    // console.log(name, newValue);
+    handleChange(name, newValue);
   };
 
   const handleSelectChange = (option) => {
-    onChange('type', option);
+    console.log(option);
+    handleChange('type', option);
   };
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    data.set('favorite', state.favorite);
-    onSubmit(data);
+    const formData = new FormData(e.currentTarget);
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}: ${value}`);
+    // }
+    //const data = Object.fromEntries(formData.entries());
+    //  console.log('handle submit data', data);
+    //data.favorite = {state.favorite };
+    // or
+    // formData.append('name', name);
+    // formData.append('type', type);
+    // formData.append('description', description);
+    // formData.append('price', price);
+    formData.set('favorite', state.favorite);
+    // onSubmit(formData);
+    dispatch(addProductThunk({ ...formData }));
     reset();
+    navigate('/list-products');
   }
 
   if (isLoading) {
@@ -50,7 +72,7 @@ const CreateProductsPage = () => {
   return (
     <main className='max-w-md px-2 mx-auto '>
       <h1 className='text-3xl text-blue-700 text-center mt-6 mb-6 font-bold'>Add Product</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType='multipart/form-data'>
         <p className='text-lg font-semibold'>Name</p>
         <input
           type='text'
@@ -89,7 +111,6 @@ const CreateProductsPage = () => {
           type='file'
           name='photo'
           placeholder='Add photo'
-          minLength='10'
           required
           onChange={handleInputChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
@@ -99,10 +120,6 @@ const CreateProductsPage = () => {
           type='checkbox'
           name='favorite'
           checked={favorite}
-          value={price}
-          min='1'
-          max='400000000'
-          required
           onChange={handleInputChange}
           className='form-checkbox mb-6  w-8 h-8 px-4 py-2 text-lg text-blue-600 border border-gray-300 rounded transition duration-200 ease-in-out shadow-lg shadow-red-100'
         />
@@ -113,7 +130,7 @@ const CreateProductsPage = () => {
           name='price'
           value={price}
           min='1'
-          max='400000000'
+          max='40000'
           required
           onChange={handleInputChange}
           className='w-full px-4 py-2 text-lg text-gray-700 bg-white border border-gray-300 rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
