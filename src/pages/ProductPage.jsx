@@ -1,13 +1,17 @@
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { SearchBox } from '../components/Products/SearchBox';
-import { ProductsList } from '../components/Products/ProductsList';
+import { Suspense } from 'react';
+import { ProductBlock } from '../components/Products/ProductBlock';
 
 const ProductPage = () => {
-  // const products = getProducts();
+  const location = useLocation();
+  // const dispatch = useDispatch();
+  // const products = useSelector(selectProducts);
+  // console.log(products);
   const [searchParams, setSearchParams] = useSearchParams();
   const productName = searchParams.get('name') ?? '';
 
-  // const visibleProducts = products.filter((product) =>
+  // const visibleProducts = products?.filter((product) =>
   //   product.name.toLowerCase().includes(productName.toLowerCase())
   // );
 
@@ -18,9 +22,17 @@ const ProductPage = () => {
 
   return (
     <main>
-      <SearchBox value={productName} onChange={updateQueryString} />
-      <ProductsList />
+      <div className='flex items-center space-x-3'>
+        <SearchBox value={productName} onChange={updateQueryString} />
+        <NavLink to='add-product' state={location.state}>
+          Add product
+        </NavLink>
+      </div>
+      <ProductBlock />
       {/* <ProductsList products={visibleProducts} /> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
