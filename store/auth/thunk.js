@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getProfile, signIn, logOut, setToken } from '../../share/api/auth-service';
+import { getProfile, signIn, logOut } from '../../share/api/auth-service';
 
 export const loginThunk = createAsyncThunk('auth/signin', async (data, { rejectWithValue }) => {
   try {
     const result = await signIn(data);
+    console.log('RESULT', result);
     return result;
   } catch ({ response }) {
     return rejectWithValue(response.data.message);
@@ -15,7 +16,7 @@ export const getProfileThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
-      console.log(auth.token);
+      // console.log(auth.token);
       const result = await getProfile(auth.token);
       console.log('PROFILE', result);
       return result;
