@@ -21,7 +21,7 @@ const handlePending = (state) => {
   state.error = null;
 };
 
-const handleFullfilled = (state, { payload }) => {
+const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.user = payload.user;
@@ -29,11 +29,11 @@ const handleFullfilled = (state, { payload }) => {
   state.isLogin = true;
 };
 
-const handleFulfilledProfile = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = null;
-  state.user = payload.user;
-};
+// const handleFulfilledProfile = (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = null;
+//   state.user = payload.user;
+// };
 
 const handleFulfilledLogout = (state) => {
   state.isLoading = false;
@@ -50,8 +50,8 @@ const handleRejected = (state, { payload }) => {
 
 const handleRejectedProfile = (state, { payload }) => {
   state.isLoading = false;
-  state.error = payload;
   state.token = '';
+  state.error = payload;
 };
 
 const authSlice = createSlice({
@@ -60,8 +60,8 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loginThunk.fulfilled, handleFullfilled)
-      .addCase(getProfileThunk.fulfilled, handleFulfilledProfile)
+      .addCase(loginThunk.fulfilled, handleFulfilled)
+      .addCase(getProfileThunk.fulfilled, handleFulfilled)
       .addCase(logOutThunk.fulfilled, handleFulfilledLogout)
       .addCase(getProfileThunk.rejected, handleRejectedProfile)
       .addMatcher(
