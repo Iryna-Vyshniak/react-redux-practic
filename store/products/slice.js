@@ -3,6 +3,7 @@ import { addProductThunk, getAllProductsThunk, getProductByIdThunk } from './thu
 
 const initialState = {
   items: [],
+  productDetails: null,
   isLoading: false,
   error: null,
 };
@@ -29,6 +30,7 @@ const handleFulfilled = (state, action) => {
 };
 
 const handleFulfilledAdd = (state, { payload }) => {
+  console.log('PAYLOAD', payload);
   // return {
   //   ...state,
   //   isLoading: true,
@@ -41,9 +43,9 @@ const handleFulfilledAdd = (state, { payload }) => {
 };
 
 const handleFulfilledbyId = (state, { payload }) => {
-  state.isLoading = true;
+  state.isLoading = false;
   state.error = null;
-  state.products = state.items.filter((product) => product._id !== payload.id);
+  state.productDetails = payload;
 };
 
 const handleRejected = (state, { payload }) => {
