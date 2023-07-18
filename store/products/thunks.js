@@ -9,7 +9,7 @@ export const getAllProductsThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await api.getAllProducts();
-      console.log('thunk all products', data);
+      // console.log('thunk all products', data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
@@ -35,7 +35,8 @@ export const getProductByIdThunk = createAsyncThunk(
   'products/id',
   async (id, { rejectWithValue }) => {
     try {
-      const { data: result } = await api.getProductById(id);
+      const result = await api.getProductById(id);
+      // console.log('ID', result);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);

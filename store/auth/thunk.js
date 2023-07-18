@@ -4,7 +4,7 @@ import { getProfile, signIn, logOut } from '../../share/api/auth-service';
 export const loginThunk = createAsyncThunk('auth/signin', async (data, { rejectWithValue }) => {
   try {
     const result = await signIn(data);
-    console.log('RESULT', result);
+    //console.log('RESULT', result);
     return result;
   } catch ({ response }) {
     return rejectWithValue(response.data.message);
@@ -18,7 +18,7 @@ export const getProfileThunk = createAsyncThunk(
       const { auth } = getState();
       // console.log(auth.token);
       const result = await getProfile(auth.token);
-      console.log('PROFILE', result);
+      //console.log('PROFILE', result);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
