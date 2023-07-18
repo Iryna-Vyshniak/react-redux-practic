@@ -6,12 +6,19 @@ const instance = axios.create({
 });
 
 export const setToken = (token) => {
-  return (instance.defaults.headers.authorization = `Bearer ${token}`);
+  if (!token) {
+    return (instance.defaults.headers.authorization = '');
+  }
+  instance.defaults.headers.authorization = `Bearer ${token}`;
+  // instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  // instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const dellToken = () => {
-  return (instance.defaults.headers.authorization = '');
-};
+//export const dellToken = () => {
+// instance.defaults.headers.authorization = '';
+//instance.defaults.headers.common['Authorization'] = '';
+// instance.defaults.headers.common.Authorization = '';
+//};
 
 //  register
 export const signUp = async (body) => {
@@ -31,6 +38,7 @@ export const verify = async (verificationToken) => {
 export const signIn = async (body) => {
   const { data: result } = await instance.post('/auth/signin', body);
   console.log('LOGIN RESULT', result);
+  console.log('LOGIN RESULT token', result.token);
   setToken(result.token);
   return result;
 };
@@ -38,7 +46,7 @@ export const signIn = async (body) => {
 // logout
 export const logOut = async () => {
   const { data } = await instance.post('/auth/logout');
-  dellToken();
+  setToken();
   return data;
 };
 
@@ -54,7 +62,7 @@ export const getProfile = async (token) => {
     console.log('CURRENT USER', data);
     return data;
   } catch (error) {
-    dellToken();
+    setToken();
     throw error;
   }
 };
