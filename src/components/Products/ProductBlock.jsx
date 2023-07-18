@@ -3,7 +3,7 @@ import { ProductsList } from './ProductsList';
 import { useEffect } from 'react';
 import { getAllProductsThunk } from '../../../store/products/thunks';
 
-export const ProductBlock = () => {
+export const ProductBlock = ({ products }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const ProductBlock = () => {
 
   return (
     <div>
-      <ProductsList />
+      <ProductsList products={products} />
     </div>
   );
 };
