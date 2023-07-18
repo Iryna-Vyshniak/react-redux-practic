@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
+  //persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,20 +9,21 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import { reducer } from './reducer';
+//import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { rootReducer } from './reducer';
 // import { reducer as rootReducer } from './reducer';
 
-const persistConfig = {
-  key: 'auth',
-  storage,
-  // whitelist: ['token'],
-};
+// const persistConfig = {
+//   key: 'auth',
+//   storage,
+//   // whitelist: ['token'],
+// };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  // reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
