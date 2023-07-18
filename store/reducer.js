@@ -1,4 +1,6 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 // import { counterReducer } from './counter/counterReducer';
 import { counterReducer } from './counter/counterSlice';
 //  import { todoReducer } from './todo/todoReducer';
@@ -8,8 +10,16 @@ import { filtersReducer } from './filter/filterSlice';
 import { authReducer } from './auth/slice';
 import { productsReducer } from './products/slice';
 
-export const reducer = combineReducers({
-  auth: authReducer,
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token', 'user'],
+};
+
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+
+export const rootReducer = combineReducers({
+  auth: persistedAuthReducer,
   products: productsReducer,
   counter: counterReducer,
   todo: todoReducer,
