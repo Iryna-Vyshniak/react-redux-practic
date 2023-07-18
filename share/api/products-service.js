@@ -1,38 +1,55 @@
-import axios from 'axios';
-
-const instance = axios.create({
-  baseURL: `http://localhost:3500/api`,
-  // baseURL: 'https://simple-products-backend.onrender.com/api',
-});
+import instance from './auth-service';
 
 export const getAllProducts = async () => {
   try {
     const response = await instance.get('/products');
-    console.log(response);
-    console.log(response.data);
+    // console.log(response);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const createProduct = async (data) => {
+export const createProduct = (data) => {
+  console.log('API ADD', data);
+  return instance.post('/products', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};
+// export const createProduct = async (data) => {
+//   console.log('API ADD', data);
+//   try {
+//     const response = await instance.post('/products', data, {
+//       headers: {
+//         'Content-Type': 'multipart/form-data',
+//       },
+//     });
+//     console.log(response);
+//     console.log(response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+export const getProductById = async (id) => {
+  //  console.log(typeof id, 'ID', id);
   try {
-    const response = await instance.post('/products', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    console.log(response);
-    console.log(response.data);
-    return response.data;
+    const { data } = await instance.get(`/products/${id}`);
+    // console.log('details api', data);
+    return data;
   } catch (error) {
-    console.log(error);
+    if (error.response && error.response.status === 404) {
+      // Обробка помилки 404 (продукт не знайдено)
+      console.log('Product not found');
+    } else {
+      // Інші помилки
+      console.log('Error fetching product:', error.message);
+    }
   }
-};
-
-export const getProductById = (id) => {
-  return instance.get(`/products/${id}`);
 };
 
 export default instance;
