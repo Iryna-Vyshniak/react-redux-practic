@@ -22,11 +22,10 @@ export const addProductThunk = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const { data: result } = await api.createProduct(data);
-      console.log('DATA thunk result', result);
+      // console.log('DATA thunk result', result);
       return result;
-    } catch (error) {
-      console.log(data);
-      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    } catch ({ response }) {
+      return rejectWithValue(response);
     }
   }
 );
