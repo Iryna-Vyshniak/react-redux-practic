@@ -37,8 +37,8 @@ export const verify = async (verificationToken) => {
 // login
 export const signIn = async (body) => {
   const { data: result } = await instance.post('/auth/signin', body);
-  console.log('LOGIN RESULT', result);
-  console.log('LOGIN RESULT token', result.token);
+  // console.log('LOGIN RESULT', result);
+  // console.log('LOGIN RESULT token', result.token);
   setToken(result.token);
   return result;
 };
@@ -59,7 +59,7 @@ export const getProfile = async (token) => {
   try {
     setToken(token);
     const { data } = await instance.get('/auth/current');
-    console.log('CURRENT USER', data);
+    // console.log('CURRENT USER', data);
     return data;
   } catch (error) {
     setToken();
