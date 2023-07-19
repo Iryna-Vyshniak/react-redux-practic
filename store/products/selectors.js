@@ -4,8 +4,9 @@ export const selectError = (state) => state.products.error;
 export const selectProducts = (state) => state.products.items;
 export const selectProductDetails = (state) => state.products.productDetails;
 
-export const selectFavoriteProduct = (state) =>
-  state.products.items.selectFavoriteProductfilter(({ favorite }) => favorite);
+export const selectFavoriteProduct = (state) => {
+  return state.items.filter(({ favorite }) => favorite);
+};
 
 export const selectFilteredProducts = ({ filter, products }) => {
   if (!filter) {
