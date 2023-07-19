@@ -12,10 +12,9 @@ export const getAllProducts = async () => {
 };
 
 export const createProduct = (data) => {
-  console.log('API ADD', data);
-  return instance.post('/products', data, {
+  return instance.post('/products/add-product', data, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data;',
     },
   });
 };
