@@ -4,7 +4,7 @@ import { logOutThunk } from '../../../store/auth/thunk';
 
 export const UserNav = () => {
   const user = useSelector(getUser);
-  console.log('USER userNav', user);
+  // console.log('USER userNav', user);
 
   const dispatch = useDispatch();
 
@@ -14,7 +14,11 @@ export const UserNav = () => {
 
   return (
     <div className='flex space-x-1 items-center'>
-      <img src={user.avatarUrl} alt='avatar' className='w-6 h-6 rounded-full' />
+      <img
+        src={`http://localhost:3500/${user.avatarUrl}`}
+        alt='avatar'
+        className='w-6 h-6 rounded-full'
+      />
       <span className='mr-2 text-lime-600 font-semibold'>{user.name},</span>
       <button
         onClick={onLogout}
