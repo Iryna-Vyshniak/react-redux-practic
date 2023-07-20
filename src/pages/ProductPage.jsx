@@ -1,13 +1,13 @@
 import { NavLink, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { SearchBox } from '../components/Products/SearchBox';
 import { Suspense } from 'react';
-import { ProductBlock } from '../components/Products/ProductBlock';
 import { useSelector } from 'react-redux';
 import { selectProducts } from '../../store/products/selectors';
+import { ProductsList } from '../components/Products/ProductsList';
 
 const ProductPage = () => {
   const location = useLocation();
-  // const dispatch = useDispatch();
+
   const products = useSelector(selectProducts);
   // console.log(products);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,19 +23,18 @@ const ProductPage = () => {
   };
 
   return (
-    <main>
+    <section>
       <div className='flex items-center space-x-3'>
         <SearchBox value={productName} onChange={updateQueryString} />
         <NavLink to='add-product' state={location.state}>
           Add product
         </NavLink>
       </div>
-      <ProductBlock products={visibleProducts} />
-      {/* <ProductsList products={visibleProducts} /> */}
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </main>
+      <ProductsList products={visibleProducts} />
+    </section>
   );
 };
 
