@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import RegisterForm from '../components/RegisterForm';
-import { signUp } from '../../share/api/auth-service';
+import { signUp } from '../share/api/auth-service';
 
 const RegisterPage = () => {
   const navigate = useNavigate();

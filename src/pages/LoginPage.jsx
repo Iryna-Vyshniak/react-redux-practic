@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import LoginForm from '../components/LoginForm';
-import { loginThunk } from '../../store/auth/thunk';
-import { verify } from '../../share/api/auth-service';
+import { loginThunk } from '../store/auth/thunk';
+import { verify } from '../share/api/auth-service';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();

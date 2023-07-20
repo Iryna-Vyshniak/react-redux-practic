@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getToDo } from '../../../store/selectors';
+import { getToDo } from '../../store/selectors';
 
 export const ToDoCounter = () => {
   const todo = useSelector(getToDo);

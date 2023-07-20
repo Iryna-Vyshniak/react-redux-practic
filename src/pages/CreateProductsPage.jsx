@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from '../../store/products/selectors';
-import { addProductThunk } from '../../store/products/thunks';
+import { selectIsLoading } from '../store/products/selectors';
+import { addProductThunk } from '../store/products/thunks';
 import { useNavigate } from 'react-router-dom';
 import { ProductForm } from '../components/Products/ProductForm';
 

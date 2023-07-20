@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { getStatusFilter, getToDo } from '../../../store/selectors';
-import { statusFilters } from '../../../store/constants';
+import { getStatusFilter, getToDo } from '../../store/selectors';
+import { statusFilters } from '../../store/constants';
 import { Task } from './Task';
 
 const getVisibleTodo = (todo, statusFilter) => {

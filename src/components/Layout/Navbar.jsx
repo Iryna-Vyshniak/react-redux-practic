@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { isUserLogin } from '../../../store/auth/selectors';
+import { isUserLogin } from '../../store/auth/selectors';
 import { AuthNav } from './AuthNav';
 // import { UserNav } from './UserNav';
 import NavbarMenu from './NavbarMenu';

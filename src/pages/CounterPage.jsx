@@ -3,7 +3,7 @@ import { BsPlusCircle } from 'react-icons/bs';
 import { SlMinus } from 'react-icons/sl';
 import Step from '../components/Step';
 // import { decrement, increment } from '../../store/counter/actions';
-import { decrement, increment } from '../../store/counter/counterSlice';
+import { decrement, increment } from '../store/counter/counterSlice';
 
 const CounterPage = () => {
   //const [count, setCount] = useState(0);

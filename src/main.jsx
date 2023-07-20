@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App.jsx';
 import './index.css';
-import { persistor, store } from '../store/store.js';
+import { persistor, store } from './store/store.js';
 import AuthLayout from './components/Layout/AuthLayout.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

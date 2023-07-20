@@ -3,7 +3,7 @@ import { SiDeepnote } from 'react-icons/si';
 import Navbar from './Navbar';
 import { UserNav } from './UserNav';
 import { useSelector } from 'react-redux';
-import { isUserLogin } from '../../../store/auth/selectors';
+import { isUserLogin } from '../../store/auth/selectors';
 
 const Header = () => {
   const isLogin = useSelector(isUserLogin);

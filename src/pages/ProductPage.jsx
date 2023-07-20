@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation, useSearchParams } from 'react-router-dom'
 import { SearchBox } from '../components/Products/SearchBox';
 import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from '../../store/products/selectors';
+import { selectProducts } from '../store/products/selectors';
 import { ProductsList } from '../components/Products/ProductsList';
 
 const ProductPage = () => {

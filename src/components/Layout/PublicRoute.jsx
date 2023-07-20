@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { isUserLogin } from '../../../store/auth/selectors';
+import { isUserLogin } from '../../store/auth/selectors';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PublicRoute = () => {

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './Button';
-import { statusFilters } from '../../../store/constants';
-//  import { setStatusFilter } from '../../../store/filter/actions';
-import { setStatusFilter } from '../../../store/filter/filterSlice';
-import { getStatusFilter } from '../../../store/selectors';
+import { statusFilters } from '../../store/constants';
+//  import { setStatusFilter } from '../../store/filter/actions';
+import { setStatusFilter } from '../../store/filter/filterSlice';
+import { getStatusFilter } from '../../store/selectors';
 
 export const FormFilterTodo = () => {
   const dispatch = useDispatch();

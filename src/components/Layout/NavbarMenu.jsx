@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { isUserLogin } from '../../../store/auth/selectors';
-import items from '../../../share/menu-items.json';
+import { isUserLogin } from '../../store/auth/selectors';
+import items from '../../share/menu-items.json';
 import { NavLink } from 'react-router-dom';
 
 const NavbarMenu = () => {

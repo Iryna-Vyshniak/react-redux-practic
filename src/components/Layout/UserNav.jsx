@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../store/auth/selectors';
-import { logOutThunk } from '../../../store/auth/thunk';
+import { getUser } from '../../store/auth/selectors';
+import { logOutThunk } from '../../store/auth/thunk';
 
 export const UserNav = () => {
   const user = useSelector(getUser);

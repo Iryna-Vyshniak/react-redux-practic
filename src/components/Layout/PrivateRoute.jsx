@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getAuth } from '../../../store/auth/selectors';
+import { getAuth } from '../../store/auth/selectors';
 import { Outlet, Navigate } from 'react-router-dom';
 
 const PrivateRoute = () => {

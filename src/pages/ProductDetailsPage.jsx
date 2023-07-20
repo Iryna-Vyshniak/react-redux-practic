@@ -2,9 +2,9 @@ import { BackLink } from '../components/BackLink';
 //import { getProductById } from '../../share/api/products-service';
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getProductByIdThunk } from '../../store/products/thunks';
+import { getProductByIdThunk } from '../store/products/thunks';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectProductDetails } from '../../store/products/selectors';
+import { selectProductDetails } from '../store/products/selectors';
 
 const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -19,17 +19,19 @@ const ProductDetailsPage = () => {
   }, [dispatch, id]);
 
   return (
-    <main>
+    <>
       <BackLink to={backLinkHref}>Back to products</BackLink>
       {product && (
         <>
           {product.poster && (
-            <img
-              src={`http://localhost:3500/${product.poster}`}
-              alt={product.name}
-              className='h-[360px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
-              loading='lazy'
-            />
+            <div className='mx-auto w-[50vw] h-[auto] object-cover object-center'>
+              <img
+                src={`http://localhost:3500/${product.poster}`}
+                alt={product.name}
+                className='h-full w-full hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
+                loading='lazy'
+              />
+            </div>
           )}
 
           <div>
@@ -41,7 +43,7 @@ const ProductDetailsPage = () => {
         </>
       )}
       {/* {console.log(product)} */}
-    </main>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { useState } from 'react';
-import useForm from '../../share/hooks/useForm';
+import { useCallback, useState } from 'react';
+// import useForm from '../share/hooks/useForm';
 
 const initialState = {
   email: '',
@@ -9,15 +9,31 @@ const initialState = {
 };
 
 const LoginForm = ({ onSubmit }) => {
+  // const [state, setState] = useState(initialState)
   const [showPassword, setShowPassword] = useState(false);
-  const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
+  //const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
+
+  const [state, setState] = useState(initialState);
 
   const { email, password } = state;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    handleChange(name, value);
+    setState((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    setState((prevState) => ({ ...prevState, formData }));
+    onSubmit({ ...state });
+    //reset();
+  };
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   handleChange(name, value);
+  // };
 
   return (
     <form onSubmit={handleSubmit} autoComplete='off'>

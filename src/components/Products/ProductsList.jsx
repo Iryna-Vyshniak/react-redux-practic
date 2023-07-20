@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { getAllProductsThunk } from '../../../store/products/thunks';
+import { getAllProductsThunk } from '../../store/products/thunks';
 
 export const ProductsList = ({ products }) => {
   const location = useLocation();

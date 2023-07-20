@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { MdClose } from 'react-icons/md';
-// import { deleteTask, toggleCompleted } from '../../../store/todo/actions';
-import { deleteTask, toggleCompleted } from '../../../store/todo/todoSlice';
+// import { deleteTask, toggleCompleted } from '../../store/todo/actions';
+import { deleteTask, toggleCompleted } from '../../store/todo/todoSlice';
 
 export const Task = ({ task }) => {
   const dispatch = useDispatch();
