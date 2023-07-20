@@ -26,10 +26,10 @@ const CreateProductsPage = () => {
   }
 
   return (
-    <main className='max-w-md px-2 mx-auto '>
+    <div className='block max-w-md px-2 mx-auto '>
       <h1 className='text-3xl text-blue-700 text-center mt-6 mb-6 font-bold'>Add Product</h1>
       <ProductForm onSubmit={sendFormData} />
-    </main>
+    </div>
   );
 };
 
