@@ -1,11 +1,17 @@
 import { NavLink, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { SearchBox } from '../components/Products/SearchBox';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from '../../store/products/selectors';
 import { ProductsList } from '../components/Products/ProductsList';
 
 const ProductPage = () => {
+  const [showForm, setShowForm] = useState();
+
+  const toggleForm = () => {
+    setShowForm((prevState) => !prevState);
+  };
+
   const location = useLocation();
 
   const products = useSelector(selectProducts);
@@ -25,14 +31,17 @@ const ProductPage = () => {
   return (
     <section>
       <div className='flex items-center space-x-3'>
-        <SearchBox value={productName} onChange={updateQueryString} />
-        <NavLink to='add-product' state={location.state}>
-          Add product
+        {!showForm && <SearchBox value={productName} onChange={updateQueryString} />}
+        <NavLink to={showForm ? ' ' : 'add-product'} state={location.state} onClick={toggleForm}>
+          {showForm ? 'Hide form' : 'Add product'}
         </NavLink>
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
+
+      {showForm && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      )}
       <ProductsList products={visibleProducts} />
     </section>
   );
