@@ -120,9 +120,10 @@ export const ProductForm = ({ onSubmit }) => {
       <div>
         <p className='text-lg font-semibold'>Image</p>
         <div
-          className={`relative z-10 flex items-center justify-center w-full h-[360px] px-4 py-2`}
+          className='relative z-10 flex items-center justify-center w-full h-[360px] px-4 py-2 border-2 border-white rounded transition duration-200 ease-in-out focus:text-gray-800 focus:bg-white focus:border-slate-600 mb-6 shadow-lg shadow-red-100'
           style={{
             backgroundImage: path ? `url(${path})` : 'none',
+            backgroundColor: path ? 'transparent' : 'rgb(240 249 255 / 1)', // Змінено на 'blue', щоб встановити блакитний колір
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
