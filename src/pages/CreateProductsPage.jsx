@@ -14,10 +14,10 @@ const CreateProductsPage = () => {
     // for (const [key, value] of data.entries()) {
     //   console.log(`${key}: ${value}`);
     // }
-    const product = Object.fromEntries(data.entries());
-    console.log('handle submit data', product);
+    // const product = Object.fromEntries(data.entries());
+    // console.log('handle submit data', product);
     // console.log(typeof data);
-    dispatch(addProductThunk(product));
+    dispatch(addProductThunk(data));
     navigate('/products');
   };
 

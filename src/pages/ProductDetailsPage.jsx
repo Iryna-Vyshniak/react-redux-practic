@@ -40,7 +40,7 @@ const ProductDetailsPage = () => {
           </div>
         </>
       )}
-      {console.log(product)}
+      {/* {console.log(product)} */}
     </main>
   );
 };
