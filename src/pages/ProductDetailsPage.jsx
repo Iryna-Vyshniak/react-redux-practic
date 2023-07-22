@@ -26,7 +26,7 @@ const ProductDetailsPage = () => {
           {product.poster && (
             <div className='mx-auto w-[50vw] h-[auto] object-cover object-center'>
               <img
-                src={`http://localhost:3500/${product.poster}`}
+                src={`https://simple-products-backend.onrender.com/${product.poster}`}
                 alt={product.name}
                 className='h-full w-full hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
                 loading='lazy'

@@ -26,7 +26,7 @@ export const ProductsList = ({ products }) => {
           <Link to={`${product._id}`} state={{ from: location }} className='contents'>
             {product.poster && (
               <img
-                src={`http://localhost:3500/${product.poster}`}
+                src={`https://simple-products-backend.onrender.com/${product.poster}`}
                 alt={product.name}
                 className='h-[170px] w-full object-contain hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
                 loading='lazy'
@@ -39,7 +39,7 @@ export const ProductsList = ({ products }) => {
                 <div className='flex space-x-2 items-center'>
                   {product.owner.avatarUrl && (
                     <img
-                      src={`http://localhost:3500/${product.owner.avatarUrl}`}
+                      src={`https://simple-products-backend.onrender.com/${product.owner.avatarUrl}`}
                       alt={product.owner.name}
                       className='h-5 w-5 object-cover hover:scale-105 transition-scale duration-200 ease-in-out rounded-full'
                       loading='lazy'
