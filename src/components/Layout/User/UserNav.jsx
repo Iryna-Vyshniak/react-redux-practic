@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import { getUser } from '../../../store/auth/selectors';
 import { ModalComponent } from '../../Modal/ModalComponent';
-import { UpdateUserForm } from './updateUserForm';
-import { useState } from 'react';
+import { UpdateUserForm } from './UpdateUserForm';
 import { UserMenu } from './UserMenu';
 
 export const UserNav = () => {
