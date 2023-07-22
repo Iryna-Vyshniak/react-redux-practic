@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App.jsx';
-import './index.css';
+import './styles/index.css';
 import { persistor, store } from './store/store.js';
 import AuthLayout from './components/Layout/AuthLayout.jsx';
 
