@@ -48,7 +48,7 @@ const LoginForm = ({ onSubmit }) => {
           className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out'
         />
       </label>
-      <label className='flex flex-col mb-4'>
+      <label className='relative flex flex-col mb-4'>
         Password
         <input
           type={showPassword ? 'text' : 'password'}
@@ -60,12 +60,12 @@ const LoginForm = ({ onSubmit }) => {
         />
         {showPassword ? (
           <AiFillEyeInvisible
-            className='absolute right-3 top-3 text-xl cursor-pointer'
+            className='absolute right-3 top-[40%] text-xl cursor-pointer'
             onClick={() => setShowPassword((prevState) => !prevState)}
           />
         ) : (
           <AiFillEye
-            className='absolute right-3 top-3 text-xl cursor-pointer'
+            className='absolute right-3 top-[40%] text-xl cursor-pointer'
             onClick={() => setShowPassword((prevState) => !prevState)}
           />
         )}
