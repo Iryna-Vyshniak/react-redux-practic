@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import useForm from '../../share/hooks/useForm';
-import { initialState } from './InitialState';
+import { initialState } from './initialState';
 import typeProducts from '../../share/typeProducts.json';
 import { useEffect, useState } from 'react';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
