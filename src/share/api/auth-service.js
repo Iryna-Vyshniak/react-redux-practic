@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: `http://localhost:3500/api`,
-  // baseURL: `https://simple-products-backend.onrender.com/api`,
+  // baseURL: `http://localhost:3500/api`,
+  baseURL: `https://simple-products-backend.onrender.com/api`,
 });
 
 export const setToken = (token) => {
