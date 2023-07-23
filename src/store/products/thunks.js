@@ -6,9 +6,10 @@ import * as api from '../../share/api/products-service';
 
 export const getAllProductsThunk = createAsyncThunk(
   'products/getAll',
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
+    console.log(page);
     try {
-      const data = await api.getAllProducts();
+      const data = await api.getAllProducts(page);
       // console.log('thunk all products', data);
       return data;
     } catch ({ response }) {
