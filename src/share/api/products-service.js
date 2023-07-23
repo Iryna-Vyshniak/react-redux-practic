@@ -1,8 +1,13 @@
 import instance from './auth-service';
 
-export const getAllProducts = async () => {
+export const getAllProducts = async (page) => {
   try {
-    const response = await instance.get('/products');
+    const response = await instance.get(`/products`, {
+      params: {
+        page,
+        limit: 5,
+      },
+    });
     // console.log(response);
     // console.log(response.data);
     return response.data;
