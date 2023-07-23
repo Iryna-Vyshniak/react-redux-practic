@@ -15,12 +15,18 @@ const persistConfig = {
   storage,
   whitelist: ['token', 'user'],
 };
+const persistConfigProduct = {
+  key: 'products',
+  storage,
+  whitelist: ['items', 'currentPage'],
+};
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedProductReducer = persistReducer(persistConfigProduct, productsReducer);
 
 export const rootReducer = combineReducers({
   auth: persistedAuthReducer,
-  products: productsReducer,
+  products: persistedProductReducer,
   counter: counterReducer,
   todo: todoReducer,
   filters: filtersReducer,
