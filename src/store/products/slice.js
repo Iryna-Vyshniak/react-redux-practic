@@ -4,6 +4,8 @@ import { addProductThunk, getAllProductsThunk, getProductByIdThunk } from './thu
 const initialState = {
   items: [],
   productDetails: null,
+  currentPage: 1,
+  totalPages: 0,
   isLoading: false,
   error: null,
 };
@@ -26,7 +28,9 @@ const handlePending = (state) => {
 const handleFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.items = action.payload;
+  state.items = action.payload.products;
+  state.currentPage = action.payload.currentPage;
+  state.totalPages = action.payload.totalPages;
 };
 
 const handleFulfilledAdd = (state, { payload }) => {
