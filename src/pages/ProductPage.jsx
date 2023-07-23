@@ -7,6 +7,12 @@ import { ProductsList } from '../components/Products/ProductsList';
 
 const ProductPage = () => {
   const [showForm, setShowForm] = useState();
+  const [searchParams, setSearchParams] = useSearchParams({ name: '', page: 1 });
+  // console.log(useSearchParams());
+
+  const productName = searchParams.get('name') ?? '';
+  const page = Number(searchParams.get('page') || 1);
+  // console.log('PAGE: ', page, typeof page);
 
   const toggleForm = () => {
     setShowForm((prevState) => !prevState);
@@ -16,8 +22,6 @@ const ProductPage = () => {
 
   const products = useSelector(selectProducts);
   // console.log(products);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const productName = searchParams.get('name') ?? '';
 
   const visibleProducts = products?.filter((product) =>
     product.name.toLowerCase().includes(productName.toLowerCase())
@@ -42,7 +46,7 @@ const ProductPage = () => {
           <Outlet />
         </Suspense>
       )}
-      <ProductsList products={visibleProducts} />
+      <ProductsList products={visibleProducts} page={page} setSearchParams={setSearchParams} />
     </section>
   );
 };
