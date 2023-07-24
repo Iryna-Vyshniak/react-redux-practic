@@ -6,7 +6,7 @@ import { Pagination } from '../Pagination';
 import { selectCurrentPage, selectTotalPages } from '../../store/products/selectors';
 
 export const ProductsList = ({ products, page, setSearchParams }) => {
-  const API = import.meta.env.VITE_API_KEY;
+  // const API = import.meta.env.VITE_API_KEY;
 
   const location = useLocation();
   // console.log('PRODUCTS', products);
@@ -37,7 +37,7 @@ export const ProductsList = ({ products, page, setSearchParams }) => {
                 <Link to={`${product._id}`} state={{ from: location }} className='contents'>
                   {product.poster && (
                     <img
-                      src={`${API}/${product.poster}`}
+                      src={product.poster}
                       alt={product.name}
                       className='h-[170px] w-full object-contain hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
                       loading='lazy'
@@ -50,7 +50,7 @@ export const ProductsList = ({ products, page, setSearchParams }) => {
                       <div className='flex space-x-2 items-center'>
                         {product.owner.avatarUrl && (
                           <img
-                            src={`${API}/${product.owner.avatarUrl}`}
+                            src={product.owner.avatarUrl}
                             alt={product.owner.name}
                             className='h-5 w-5 object-cover hover:scale-105 transition-scale duration-200 ease-in-out rounded-full'
                             loading='lazy'
