@@ -5,7 +5,7 @@ export const getAllProducts = async (page) => {
     const response = await instance.get(`/products`, {
       params: {
         page,
-        limit: 5,
+        limit: 6,
       },
     });
     // console.log(response);
