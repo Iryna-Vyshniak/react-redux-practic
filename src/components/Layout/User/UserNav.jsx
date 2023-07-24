@@ -32,7 +32,7 @@ export const UserNav = () => {
               <img
                 src={
                   user.avatarUrl
-                    ? `https://simple-products-backend.onrender.com/${user.avatarUrl}`
+                    ? `${user.avatarUrl}`
                     : `https://source.unsplash.com/360x360?${user.name}`
                 }
                 alt='avatar'
