@@ -24,9 +24,8 @@ const UserRoutes = () => {
             <Route path='/signin' element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path='/products' element={<ProductPage />}>
-              <Route path='add-product' element={<CreateProductsPage />} />
-            </Route>
+            <Route path='/products' element={<ProductPage />} />
+            <Route path='/products/add-product' element={<CreateProductsPage />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
             <Route path='/counter' element={<CounterPage />} />
             <Route path='/todo' element={<ToDoPage />} />
