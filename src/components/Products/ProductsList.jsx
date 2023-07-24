@@ -1,20 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { getAllProductsThunk } from '../../store/products/thunks';
-import { Pagination } from '../Pagination';
-import { selectCurrentPage, selectTotalPages } from '../../store/products/selectors';
 
-export const ProductsList = ({ products, page, setSearchParams }) => {
+export const ProductsList = ({ products, page }) => {
   // const API = import.meta.env.VITE_API_KEY;
 
   const location = useLocation();
   // console.log('PRODUCTS', products);
   const dispatch = useDispatch();
-  const currentPage = useSelector(selectCurrentPage);
-  const totalPages = useSelector(selectTotalPages);
-  // console.log('PAGES', totalPages);
-  // console.log('PAGE', page);
 
   useEffect(() => {
     try {
@@ -64,11 +58,6 @@ export const ProductsList = ({ products, page, setSearchParams }) => {
               </li>
             ))}
           </ul>
-          <Pagination
-            setSearchParams={setSearchParams}
-            totalPages={totalPages}
-            currentPage={currentPage - 1}
-          />
         </>
       )}
     </>
