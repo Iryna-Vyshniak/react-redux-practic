@@ -7,8 +7,8 @@ import { ProductForm } from '../components/Products/ProductForm';
 
 const CreateProductsPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
 
   const sendFormData = (data) => {
     // for (const [key, value] of data.entries()) {
