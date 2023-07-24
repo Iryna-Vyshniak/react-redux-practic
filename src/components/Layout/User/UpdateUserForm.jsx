@@ -35,6 +35,8 @@ export const UpdateUserForm = ({ closeModal }) => {
 
     resetForm();
     closeModal();
+
+    window.location.reload();
   };
 
   return (
