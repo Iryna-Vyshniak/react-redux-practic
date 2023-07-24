@@ -1,5 +1,6 @@
 [
   { "value": "fruit", "label": "fruit" },
+  { "value": "berry", "label": "berry" },
   { "value": "vegetable", "label": "vegetable" },
   { "value": "dairy", "label": "dairy" }
 ]
