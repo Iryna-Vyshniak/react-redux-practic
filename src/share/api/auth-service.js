@@ -1,8 +1,8 @@
 import axios from 'axios';
+const API = import.meta.env.VITE_API_KEY;
 
 const instance = axios.create({
-  // baseURL: `http://localhost:3500/api`,
-  baseURL: `https://simple-products-backend.onrender.com/api`,
+  baseURL: `${API}/api`,
 });
 
 export const setToken = (token) => {
