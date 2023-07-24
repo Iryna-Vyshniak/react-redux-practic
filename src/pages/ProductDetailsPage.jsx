@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectProductDetails } from '../store/products/selectors';
 
 const ProductDetailsPage = () => {
-  const API = import.meta.env.VITE_API_KEY;
+  // const API = import.meta.env.VITE_API_KEY;
   const { id } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -27,7 +27,7 @@ const ProductDetailsPage = () => {
           {product.poster && (
             <div className='mx-auto w-[50vw] h-[auto] object-cover object-center'>
               <img
-                src={`${API}/${product.poster}`}
+                src={product.poster}
                 alt={product.name}
                 className='h-full w-full hover:scale-105 transition-scale duration-200 ease-in-out rounded-md'
                 loading='lazy'
