@@ -27,16 +27,14 @@ export const UpdateUserForm = ({ closeModal }) => {
 
   const onSubmitHandler = async (values, { resetForm }) => {
     const formData = new FormData();
-    console.log('values', values.avatar);
-    console.log('name', values.name);
+    // console.log('values', values.avatar);
+    // console.log('name', values.name);
     formData.append('name', values.name.trim());
     formData.append('avatar', values.avatar);
     dispatch(updateUserDataThunk(formData));
 
     resetForm();
     closeModal();
-
-    window.location.reload();
   };
 
   return (
