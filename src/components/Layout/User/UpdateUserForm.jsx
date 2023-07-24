@@ -87,7 +87,7 @@ export const UpdateUserForm = ({ closeModal }) => {
                   <div>
                     {/* {console.log('imagePreview', imagePreview)} */}
                     <img
-                      src={`https://simple-products-backend.onrender.com/${imagePreview}`}
+                      src={imagePreview}
                       alt={userData.name}
                       className='w-full h-full object-cover rounded-full'
                     />
