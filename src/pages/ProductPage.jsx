@@ -58,13 +58,15 @@ const ProductPage = () => {
         )} */}
         <ProductsList products={visibleProducts} page={page} />
       </section>
-      <section>
-        <Pagination
-          setSearchParams={setSearchParams}
-          totalPages={totalPages}
-          currentPage={currentPage - 1}
-        />
-      </section>
+      {products.length > 0 && (
+        <section>
+          <Pagination
+            setSearchParams={setSearchParams}
+            totalPages={totalPages}
+            currentPage={currentPage - 1}
+          />
+        </section>
+      )}
     </div>
   );
 };
