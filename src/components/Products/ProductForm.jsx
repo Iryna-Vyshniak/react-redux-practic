@@ -4,8 +4,6 @@ import { initialState } from './initialState';
 import typeProducts from '../../share/typeProducts.json';
 import { useEffect, useState } from 'react';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
-// import { BackLink } from '../BackLink';
-// import { useLocation } from 'react-router-dom';
 
 export const ProductForm = ({ onSubmit }) => {
   const [path, setPath] = useState('');
