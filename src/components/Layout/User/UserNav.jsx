@@ -22,7 +22,7 @@ export const UserNav = () => {
 
   return (
     <>
-      <div className='relative flex items-center'>
+      <div className='relative flex items-center md:ml-5 mb-3 md:mb-0'>
         <button
           onClick={toggleEditUserMenu}
           className='flex items-center justify-center border-0 outline-none'
