@@ -10,7 +10,7 @@ export const UserMenu = ({ showModal }) => {
     dispatch(logOutThunk());
   };
   return (
-    <div className='absolute top-0 right-0 mt-10 mr-2 p-4 w-56 bg-white shadow'>
+    <div className='absolute top-0 md:right-0 md:left-auto mt-10 mr-2 p-4 w-56 bg-white shadow'>
       <button
         type='button'
         onClick={() => showModal()}
