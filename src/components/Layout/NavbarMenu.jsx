@@ -13,13 +13,13 @@ const NavbarMenu = () => {
 
   const li = nav.map(({ id, link, text }) => {
     return (
-      <li key={id} className='py-3'>
+      <li key={id} className='md:ml-8 md:mb-0 mb-5 py-3'>
         <NavLink
           to={link}
           className={({ isActive }) =>
             isActive
               ? activeLink
-              : 'cursor-pointer px-3 text-sm font-semibold text-slate-400 border-b-[3px] border-b-transparent'
+              : 'cursor-pointer py-3 text-sm font-semibold text-slate-400 border-b-[3px] border-b-transparent'
           }
         >
           {text}
@@ -28,7 +28,7 @@ const NavbarMenu = () => {
     );
   });
 
-  return <ul className='flex space-x-10'>{li}</ul>;
+  return <ul className='md:flex md:items-center'>{li}</ul>;
 };
 
 export default NavbarMenu;
