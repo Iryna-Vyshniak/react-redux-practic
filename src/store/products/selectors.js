@@ -9,13 +9,3 @@ export const selectTotalPages = (state) => state.products.totalPages;
 export const selectFavoriteProduct = (state) => {
   return state.items.filter(({ favorite }) => favorite);
 };
-
-export const selectFilteredProducts = ({ filter, products }) => {
-  if (!filter) {
-    return products;
-  }
-  const visibleProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(filter.toLowerCase())
-  );
-  return visibleProducts;
-};
