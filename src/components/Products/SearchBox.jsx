@@ -9,7 +9,7 @@ export const SearchBox = ({ value, onChange }) => {
           className='px-2 py-2 pr-8 rounded font-inherit shadow-lg shadow-red-100'
           type='text'
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange}
         />
       </div>
     </div>
