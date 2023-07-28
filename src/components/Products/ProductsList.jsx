@@ -7,7 +7,6 @@ export const ProductsList = ({ products, page }) => {
   // const API = import.meta.env.VITE_API_KEY;
 
   const location = useLocation();
-  // console.log('PRODUCTS', products);
   const dispatch = useDispatch();
 
   useEffect(() => {
