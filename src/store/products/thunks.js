@@ -7,10 +7,24 @@ import * as api from '../../share/api/products-service';
 export const getAllProductsThunk = createAsyncThunk(
   'products/getAll',
   async (page, { rejectWithValue }) => {
-    console.log(page);
+    //  console.log(page);
     try {
       const data = await api.getAllProducts(page);
       // console.log('thunk all products', data);
+      return data;
+    } catch ({ response }) {
+      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    }
+  }
+);
+
+export const getProductsByQueryThunk = createAsyncThunk(
+  'products/search',
+  async (name, { rejectWithValue }) => {
+    // console.log(name);
+    try {
+      const data = await api.getProductsByQuery(name);
+      //  console.log(data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
