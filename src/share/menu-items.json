@@ -11,14 +11,15 @@
     "link": "/products",
     "private": true
   },
+  { "id": "3", "text": "Posts", "link": "/posts", "private": true },
   {
-    "id": "3",
+    "id": "4",
     "text": "Counter",
     "link": "/counter",
     "private": true
   },
   {
-    "id": "4",
+    "id": "5",
     "text": "ToDo",
     "link": "/todo",
     "private": true
