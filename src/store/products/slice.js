@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addProductThunk, getAllProductsThunk, getProductByIdThunk } from './thunks';
+import {
+  addProductThunk,
+  getAllProductsThunk,
+  getProductByIdThunk,
+  getProductsByQueryThunk,
+} from './thunks';
 
 const initialState = {
   items: [],
@@ -66,6 +71,7 @@ const productsSlice = createSlice({
       .addCase(getAllProductsThunk.fulfilled, handleFulfilled)
       .addCase(addProductThunk.fulfilled, handleFulfilledAdd)
       .addCase(getProductByIdThunk.fulfilled, handleFulfilledbyId)
+      .addCase(getProductsByQueryThunk.fulfilled, handleFulfilled)
       .addMatcher(isAnyOf(...fn(pending)), handlePending)
       .addMatcher(isAnyOf(...fn(rejected)), handleRejected);
   },
