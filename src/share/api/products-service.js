@@ -8,8 +8,21 @@ export const getAllProducts = async (page) => {
         limit: 6,
       },
     });
-    // console.log(response);
-    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getProductsByQuery = async (query) => {
+  try {
+    const response = await instance.get(`/products`, {
+      params: {
+        name: query,
+        limit: 6,
+      },
+    });
+    // console.log('RESPONSE BY QUERY', response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -23,21 +36,6 @@ export const createProduct = (data) => {
     },
   });
 };
-// export const createProduct = async (data) => {
-//   console.log('API ADD', data);
-//   try {
-//     const response = await instance.post('/products', data, {
-//       headers: {
-//         'Content-Type': 'multipart/form-data',
-//       },
-//     });
-//     console.log(response);
-//     console.log(response.data);
-//     return response.data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 export const getProductById = async (id) => {
   //  console.log(typeof id, 'ID', id);
