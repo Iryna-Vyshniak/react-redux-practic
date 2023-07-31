@@ -9,12 +9,19 @@ import { todoReducer } from './todo/todoSlice';
 import { filtersReducer } from './filter/filterSlice';
 import { authReducer } from './auth/slice';
 import { productsReducer } from './products/slice';
+import { postReducer } from './posts/slice';
 
 const persistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token', 'user'],
 };
+const persistConfigPosts = {
+  key: 'posts',
+  storage,
+  whitelist: ['items', 'currentPage', 'tags'],
+};
+
 const persistConfigProduct = {
   key: 'products',
   storage,
@@ -22,10 +29,12 @@ const persistConfigProduct = {
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedPostsReducer = persistReducer(persistConfigPosts, postReducer);
 const persistedProductReducer = persistReducer(persistConfigProduct, productsReducer);
 
 export const rootReducer = combineReducers({
   auth: persistedAuthReducer,
+  posts: persistedPostsReducer,
   products: persistedProductReducer,
   counter: counterReducer,
   todo: todoReducer,
