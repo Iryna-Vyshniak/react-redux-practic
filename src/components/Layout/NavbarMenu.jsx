@@ -13,7 +13,7 @@ const NavbarMenu = () => {
 
   const li = nav.map(({ id, link, text }) => {
     return (
-      <li key={id} className='md:ml-8 md:mb-0 mb-5 py-3'>
+      <li key={id} className='mb-5 md:ml-8 md:mb-0 py-3'>
         <NavLink
           to={link}
           className={({ isActive }) =>
