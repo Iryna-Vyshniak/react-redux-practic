@@ -5,13 +5,13 @@
     "link": "/",
     "private": true
   },
+  { "id": "2", "text": "Posts", "link": "/posts" },
   {
-    "id": "2",
+    "id": "3",
     "text": " Products",
     "link": "/products",
     "private": true
   },
-  { "id": "3", "text": "Posts", "link": "/posts", "private": true },
   {
     "id": "4",
     "text": "Counter",
