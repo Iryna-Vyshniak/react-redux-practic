@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { isUserLogin } from '../../store/auth/selectors';
 import { AuthNav } from './AuthNav';
 import NavbarMenu from './NavbarMenu';
+import ThemeSwitcher from '../themeSwitcher';
 
 const Navbar = () => {
   const isLogin = useSelector(isUserLogin);
@@ -10,6 +11,7 @@ const Navbar = () => {
     <>
       <NavbarMenu />
       {!isLogin && <AuthNav />}
+      <ThemeSwitcher />
     </>
   );
 };
