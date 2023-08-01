@@ -33,7 +33,7 @@ const PostsPage = () => {
       <section className='flex flex-col items-center justify-between p-5 min-h-[85vh]'>
         <div></div>
         {isLoading ? (
-          <div>...Loading</div>
+          <div className='text-[var(--color-text)]'>...Loading</div>
         ) : posts?.length > 0 ? (
           <div className='w-full flex flex-col gap-6 md:basis-4/5'>
             <PostsList />
