@@ -10,3 +10,16 @@ export const getAllPosts = createAsyncThunk('posts/getAll', async (page, { rejec
     return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
   }
 });
+
+export const getDetailsPost = createAsyncThunk(
+  'posts/getDetails',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await api.getDetailsPost(id);
+      // console.log('POSTS ID', data);
+      return data;
+    } catch ({ response }) {
+      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    }
+  }
+);
