@@ -22,7 +22,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={handleThemeToggle}
-      className='flex items-center justify-center w-[28px] h-[28px] rounded-full bg-[#f0fdf4] border-none cursor-pointer shadow-lg'
+      className='flex items-center justify-center w-[28px] h-[28px] my-5 md:my-0 rounded-full bg-[#f0fdf4] border-none cursor-pointer shadow-lg'
     >
       {darkMode ? (
         <BsMoonStarsFill size={16} className='text-yellow-400' />
