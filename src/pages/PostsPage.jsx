@@ -26,11 +26,7 @@ const PostsPage = () => {
 
   const page = Number(searchParams.get('page') || 1);
 
-  // const tags = useSelector(selectTags);
-
-  // useEffect(() => {
-  //   dispatch(getAllTags());
-  // }, []);
+  const tags = useSelector(selectTags);
 
   useEffect(() => {
     dispatch(getAllPosts({ page }));
@@ -39,12 +35,15 @@ const PostsPage = () => {
   return (
     <>
       <div className='block md:flex md:justify-between'>
-        <section className='flex flex-col p-5 md:w-1/5'>
-          <h2 className='hidden md:block mb-2 text-lg font-bold tracking-tight text-[var(--color-text)] text-center'>
-            Category
-          </h2>
-          <TagsBlock />
-        </section>
+        {tags.length > 0 && (
+          <section className='flex flex-col p-5 md:w-1/5'>
+            <h2 className='hidden md:block mb-2 text-lg font-bold tracking-tight text-[var(--color-text)] text-center'>
+              Category
+            </h2>
+            <TagsBlock />
+          </section>
+        )}
+
         <section className='flex flex-col items-center justify-between p-5 min-h-[85vh]'>
           <div></div>
           {isLoading ? (
