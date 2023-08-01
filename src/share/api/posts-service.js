@@ -32,7 +32,18 @@ export const getPosts = async (page) => {
         limit: 6,
       },
     });
-    console.log('RESPONSE', response);
+    // console.log('RESPONSE', response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getDetailsPost = async (id) => {
+  console.log('servise id', id);
+  try {
+    const response = await publicInstance.get(`/posts/${id}`);
+    // console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
     console.log(error);
