@@ -1,10 +1,11 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getAllPosts, getDetailsPost } from './thunks';
+import { getAllPosts, getAllTags, getDetailsPost } from './thunks';
 
 const initialState = {
   items: [],
   postDetails: null,
   popularPosts: [],
+  tags: [],
   currentPage: 1,
   totalPages: 0,
   limit: null,
@@ -12,7 +13,7 @@ const initialState = {
   error: null,
 };
 
-const customArrThunks = [getAllPosts, getDetailsPost];
+const customArrThunks = [getAllPosts, getDetailsPost, getAllTags];
 
 const status = {
   pending: 'pending',
@@ -40,6 +41,11 @@ const handleFulfilledDetails = (state, { payload }) => {
   state.error = null;
   state.postDetails = payload;
 };
+const handleFulfilledTags = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.tags = payload;
+};
 
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
@@ -55,6 +61,7 @@ const postSlice = createSlice({
     builder
       .addCase(getAllPosts.fulfilled, handleFulfilled)
       .addCase(getDetailsPost.fulfilled, handleFulfilledDetails)
+      .addCase(getAllTags.fulfilled, handleFulfilledTags)
       .addMatcher(isAnyOf(...fn(pending)), handlePending)
       .addMatcher(isAnyOf(...fn(rejected)), handleRejected);
   },
