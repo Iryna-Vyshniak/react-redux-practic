@@ -17,7 +17,7 @@ export const PostsList = () => {
           {posts?.map((post) => (
             <li
               key={post._id}
-              className='flex flex-col max-w-sm md:max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"'
+              className='flex flex-col max-w-sm md:max-w-full bg-[var(--backgroundCard)] border border-gray-200 rounded-lg shadow '
             >
               <>
                 {post.imageUrl && (
@@ -32,18 +32,18 @@ export const PostsList = () => {
                 )}
                 <div className='mb-auto p-5'>
                   <div className='flex space-x-2 items-center justify-between'>
-                    <span className='text-xs text-stone-950 opacity-50'>
+                    <span className='text-xs text-[var(--color-text)]  opacity-50'>
                       Author: {post.owner.name}
                     </span>
-                    <span className='text-xs text-stone-950 opacity-50'>
+                    <span className='text-xs text-[var(--color-text)]  opacity-50'>
                       {post.createdAt.split('T')[0]}
                     </span>
                   </div>
                   <div className='flex flex-col flex-grow'>
-                    <h3 className='flex-grow mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+                    <h3 className='flex-grow mb-2 text-2xl font-bold tracking-tight text-[var(--color-text)] '>
                       {post.title}
                     </h3>
-                    <ul className='mt-2 text-xs text-stone-950 opacity-50'>
+                    <ul className='mt-2 text-xs text-[var(--color-text)]  opacity-50'>
                       {post.tags.map((tag) => (
                         <li key={tag}>
                           <Link to={`posts/tags/${tag}`}>#{tag}</Link>
@@ -56,13 +56,13 @@ export const PostsList = () => {
                   <div className='flex items-center gap-3'>
                     <button
                       type='button'
-                      className='flex items-center justify-center gap-2 text-sm text-stone-950 opacity-50'
+                      className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
                     >
                       <AiFillEye /> <span>{post.viewsCount}</span>
                     </button>
                     <button
                       type='button'
-                      className='flex items-center justify-center gap-2 text-sm text-stone-950 opacity-50'
+                      className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
                     >
                       <AiOutlineMessage /> <span>{post.comments?.length || 0}</span>
                     </button>
@@ -70,7 +70,7 @@ export const PostsList = () => {
                   <Link
                     to={`${post._id}`}
                     state={{ from: location }}
-                    className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-gray-900 hover:text-white bg-[#f0fdf4] rounded-lg hover:bg-lime-700 focus:ring-2 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 shadow-xl hover:shadow-md'
+                    className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)]  hover:text-white bg-[var(--button-color-active)] rounded-lg hover:bg-lime-700 focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
                   >
                     Read more
                   </Link>

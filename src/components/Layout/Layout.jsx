@@ -5,7 +5,7 @@ import Header from './Header';
 
 const Layout = () => {
   return (
-    <div className='flex flex-col min-h-screen w-full'>
+    <div className='flex flex-col min-h-screen w-full bg-[var(--background-body)]'>
       <Header />
       <main className='flex flex-col items-center flex-1 mt-10 py-5 mx-auto max-w-6xl w-full'>
         <Suspense fallback={<h3>Loading...</h3>}>

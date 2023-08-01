@@ -53,7 +53,7 @@ const Header = () => {
     //   </div>
     // </header>
     <header className='sticky top-0 left-0 z-40 w-full bg-white border-b shadow-xl'>
-      <div className='md:flex items-center justify-between mx-auto md:px-10 px-7 max-w-6xl'>
+      <div className='md:flex items-center justify-between mx-auto md:py-0 md:px-10 px-7 max-w-6xl'>
         <Link to='/' className='flex items-center my-7 md:my-0 font-[Poppins] cursor-pointer'>
           <IoLogoIonic className='mr-1 text-xl cursor-pointer text-blue-700 hover:text-red-700' />
           <span className='text-blue-700 text-xl font-semibold'>WorkShopDev</span>
