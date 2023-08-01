@@ -13,6 +13,7 @@ import { LoginPage } from '../../pages/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import PostsPage from '../../pages/PostsPage';
+import PostDetailsPage from '../../pages/PostDetailsPage';
 
 const UserRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const UserRoutes = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/posts' element={<PostsPage />} />
+          <Route path='/posts/:id' element={<PostDetailsPage />} />
           <Route element={<PublicRoute />}>
             <Route path='/signup' element={<RegisterPage />} />
             <Route path='/signin' element={<LoginPage />} />
