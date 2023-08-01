@@ -39,8 +39,18 @@ export const getPosts = async (page) => {
   }
 };
 
+export const getAllTags = async () => {
+  try {
+    const response = await publicInstance.get('/posts/tags');
+    console.log('RESPONSE', response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getDetailsPost = async (id) => {
-  console.log('servise id', id);
+  // console.log('servise id', id);
   try {
     const response = await publicInstance.get(`/posts/${id}`);
     // console.log('RESPONSE', response);
