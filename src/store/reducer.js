@@ -10,6 +10,7 @@ import { filtersReducer } from './filter/filterSlice';
 import { authReducer } from './auth/slice';
 import { productsReducer } from './products/slice';
 import { postReducer } from './posts/slice';
+import { themeReducer } from './theme.js/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -28,11 +29,18 @@ const persistConfigProduct = {
   whitelist: ['items', 'currentPage'],
 };
 
+const persistConfigTheme = {
+  key: 'theme',
+  storage,
+};
+
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 const persistedPostsReducer = persistReducer(persistConfigPosts, postReducer);
 const persistedProductReducer = persistReducer(persistConfigProduct, productsReducer);
+const persistedThemeReducer = persistReducer(persistConfigTheme, themeReducer);
 
 export const rootReducer = combineReducers({
+  theme: persistedThemeReducer,
   auth: persistedAuthReducer,
   posts: persistedPostsReducer,
   products: persistedProductReducer,
