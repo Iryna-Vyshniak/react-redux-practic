@@ -70,7 +70,7 @@ export const PostsList = () => {
                   <Link
                     to={`${post._id}`}
                     state={{ from: location }}
-                    className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)]  hover:text-white bg-[var(--button-color-active)] rounded-lg hover:bg-lime-700 focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
+                    className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)] bg-[var(--button-color-active)] rounded-lg hover:bg-[var(--buttonHover)] focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
                   >
                     Read more
                   </Link>

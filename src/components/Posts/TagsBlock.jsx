@@ -20,7 +20,7 @@ export const TagsBlock = () => {
             <li key={tag}>
               <Link
                 to={`posts/tags/${tag}`}
-                className='flex items-center justify-center mb-2 px-3 py-2 text-sm text-[var(--color-text)] text-center uppercase bg-[var(--button-color-active)] rounded-lg hover:bg-lime-700 focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
+                className='flex items-center justify-center mb-2 px-3 py-2 text-sm text-[var(--color-text)] text-center uppercase bg-[var(--button-color-active)] rounded-lg hover:bg-[var(--buttonHover)] focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
               >
                 #{tag}
               </Link>
