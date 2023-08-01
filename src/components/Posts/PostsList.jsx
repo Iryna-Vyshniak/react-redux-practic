@@ -32,10 +32,10 @@ export const PostsList = () => {
                 )}
                 <div className='mb-auto p-5'>
                   <div className='flex space-x-2 items-center justify-between'>
-                    <span className='text-xs text-[var(--color-text)]  opacity-50'>
+                    <span className='text-xs text-[var(--color-text)] opacity-50'>
                       Author: {post.owner.name}
                     </span>
-                    <span className='text-xs text-[var(--color-text)]  opacity-50'>
+                    <span className='text-xs text-[var(--color-text)] opacity-50'>
                       {post.createdAt.split('T')[0]}
                     </span>
                   </div>

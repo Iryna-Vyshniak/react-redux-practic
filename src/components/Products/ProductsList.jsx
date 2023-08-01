@@ -25,7 +25,7 @@ export const ProductsList = ({ products, page }) => {
             {products?.map((product) => (
               <li
                 key={product._id}
-                className='flex flex-col justify-between items-center m-[10px] p-4 bg-white shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-200 ease-in-out'
+                className='flex flex-col justify-between items-center m-[10px] p-4 bg-[var(--backgroundCard)] shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-200 ease-in-out'
               >
                 <Link to={`${product._id}`} state={{ from: location }} className='contents'>
                   {product.poster && (
@@ -39,7 +39,9 @@ export const ProductsList = ({ products, page }) => {
                   <div className='w-full'>
                     <h3 className='mt-2 text-black'>{product.name}</h3>
                     <div className='flex space-x-2 items-center justify-between'>
-                      <p className='text-blue-600 text-xs'>{product.createdAt.split('T')[0]}</p>
+                      <p className='text-[var(--color-text)]  text-xs'>
+                        {product.createdAt.split('T')[0]}
+                      </p>
                       <div className='flex space-x-2 items-center'>
                         {product.owner.avatarUrl && (
                           <img
@@ -49,7 +51,9 @@ export const ProductsList = ({ products, page }) => {
                             loading='lazy'
                           />
                         )}
-                        <p className='text-blue-600 text-xs uppercase'>{product.owner.name}</p>
+                        <p className='text-[var(--color-text)] text-xs uppercase'>
+                          {product.owner.name}
+                        </p>
                       </div>
                     </div>
                   </div>

@@ -1,10 +1,4 @@
-import {
-  AiOutlineArrowLeft,
-  AiFillEye,
-  AiOutlineMessage,
-  AiTwotoneEdit,
-  AiTwotoneDelete,
-} from 'react-icons/ai';
+import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiTwotoneDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../store/auth/selectors';
 import { Link, useLocation, useParams } from 'react-router-dom';
@@ -56,14 +50,14 @@ const PostDetailsPage = () => {
                   />
                 </div>
               )}
-              <span className='text-xs text-stone-950 opacity-50'>{post.owner.name}</span>
+              <span className='text-xs text-[var(--color-text)] opacity-50'>{post.owner.name}</span>
             </div>
 
-            <span className='text-xs text-stone-950 opacity-50'>
+            <span className='text-xs text-[var(--color-text)]  opacity-50'>
               {post.createdAt.split('T')[0]}
             </span>
           </div>
-          <ul className='mb-5 text-xs text-stone-950 opacity-50'>
+          <ul className='mb-5 text-xs text-[var(--color-text)]  opacity-50'>
             {post.tags.map((tag) => (
               <li key={tag}>
                 <Link to={`posts/tags/${tag}`}>#{tag}</Link>
@@ -71,31 +65,31 @@ const PostDetailsPage = () => {
             ))}
           </ul>
           <div className='mb-5'>
-            <h2 className='mb-1 text-lg text-stone-950'>{post.title}</h2>
+            <h2 className='mb-1 text-lg text-[var(--color-text)] '>{post.title}</h2>
 
-            <p className='text-xs text-stone-950 opacity-80'>{post.text}</p>
+            <p className='text-xs text-[var(--color-text)]  opacity-80'>{post.text}</p>
           </div>
           <div className='flex gap-3 items-center justify-between mb-5'>
             <div className='flex gap-3'>
               <button
                 type='button'
-                className='flex items-center justify-center gap-2 text-sm text-stone-950 opacity-50'
+                className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
               >
                 <AiFillEye /> <span>{post.viewsCount}</span>
               </button>
               <button
                 type='button'
-                className='flex items-center justify-center gap-2 text-sm text-stone-950 opacity-50'
+                className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
               >
                 <AiOutlineMessage /> <span>{post.comments?.length || 0}</span>
               </button>
             </div>
 
-            {post?.owner?._id === user?._id && (
+            {post?.owner?._id === user._id && (
               <div className='flex gap-3'>
                 <Link
                   to={`/posts`}
-                  className='flex items-center justify-center gap-2 text-lg text-stone-950 opacity-50'
+                  className='flex items-center justify-center gap-2 text-lg text-[var(--color-text)]  opacity-50'
                 >
                   <AiTwotoneEdit />
                 </Link>
@@ -110,14 +104,14 @@ const PostDetailsPage = () => {
           </div>
         </div>
       )}
-      {user?.name && (
+      {user.name && (
         <div className='w-full md:w-[450px] flex flex-col gap-3 px-4'>
-          <h2 className='text-lg text-stone-950 opacity-80'>Add comment</h2>
+          <h2 className='text-lg text-[var(--color-text)] opacity-80'>Add comment</h2>
           <form>
             <textarea
               type='text'
               placeholder='Write comment...'
-              className='mb-2 p-3 w-full h-[120px] border-2 border-solid border-stone-950 text-xs text-stone-950  resize-none outline-none'
+              className='mb-2 p-3 w-full h-[120px]  text-xs text-[var(--color-text)] bg-[var(--backgroundCard)] resize-none outline-none border border-slate-80 shadow-lg'
             />
             <div className='flex flex-row gap-3'>
               <button

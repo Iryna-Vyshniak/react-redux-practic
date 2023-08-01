@@ -18,7 +18,7 @@ export const Task = ({ task }) => {
         checked={task.completed}
         onChange={handleToggle}
       />
-      <p className='flex-grow'>{task.text}</p>
+      <p className='flex-grow text-[var(--color-text)]'>{task.text}</p>
       <button
         className='flex justify-center items-center mt-6 mb-6 mr-2 px-1 py-1 w-[28px] h-[28px] bg-red-700 text-white rounded-md shadow-lg transition duration-200 ease-in-out hover:bg-red-600 hover:shadow-md shadow-emerald-50 '
         onClick={handleDelete}

@@ -18,8 +18,8 @@ export const ToDoCounter = () => {
 
   return (
     <div>
-      <p className='m-0'>Active: {count.active}</p>
-      <p className='m-0'>Completed: {count.completed}</p>
+      <p className='m-0 text-[var(--color-text)]'>Active: {count.active}</p>
+      <p className='m-0 text-[var(--color-text)]'>Completed: {count.completed}</p>
     </div>
   );
 };

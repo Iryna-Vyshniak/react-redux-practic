@@ -25,7 +25,7 @@ const ProductDetailsPage = () => {
       {product && (
         <>
           {product.poster && (
-            <div className='mx-auto w-[50vw] h-[auto] object-cover object-center'>
+            <div className='mb-2 mx-auto w-[50vw] h-[auto] object-cover object-center'>
               <img
                 src={product.poster}
                 alt={product.name}
@@ -36,10 +36,10 @@ const ProductDetailsPage = () => {
           )}
 
           <div>
-            <h2 className='p-1 mt-2 mb-0 text-black'>{product.name}</h2>
-            <p>{product.type}</p>
-            <p>{product.description}</p>
-            <p>{product.price}$</p>
+            <h2 className='p-1 mb-2 text-[var(--color-text)] text-lg font-bold'>{product.name}</h2>
+            <p className='p-1 mb-2 text-[var(--color-text)] text-xs'>#{product.type}</p>
+            <p className='p-1 mb-2 text-[var(--color-text)] text-xs'>{product.description}</p>
+            <p className='p-1 text-[var(--color-text)] text-xs'>Price: {product.price}$</p>
           </div>
         </>
       )}
