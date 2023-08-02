@@ -14,6 +14,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import PostsPage from '../../pages/PostsPage';
 import PostDetailsPage from '../../pages/PostDetailsPage';
+import PostsByTagPage from '../../pages/PostsByTagPage';
 
 const UserRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const UserRoutes = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='/posts' element={<PostsPage />} />
+          <Route path='/posts/tags/:tag' element={<PostsByTagPage />} />
           <Route path='/posts/:id' element={<PostDetailsPage />} />
           <Route element={<PublicRoute />}>
             <Route path='/signup' element={<RegisterPage />} />
