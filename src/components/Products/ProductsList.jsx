@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { getAllProductsThunk } from '../../store/products/thunks';
+import { selectProducts } from '../../store/products/selectors';
 
-export const ProductsList = ({ products, page }) => {
+export const ProductsList = () => {
   // const API = import.meta.env.VITE_API_KEY;
 
   const location = useLocation();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    try {
-      dispatch(getAllProductsThunk(page));
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, [dispatch, page]);
+  const products = useSelector(selectProducts);
 
   return (
     <>
