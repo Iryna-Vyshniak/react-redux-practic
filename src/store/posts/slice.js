@@ -1,5 +1,12 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getAllPosts, getAllTags, getDetailsPost, getPostsByTag } from './thunks';
+import {
+  getAllPosts,
+  getAllTags,
+  getDetailsPost,
+  getPostByQuery,
+  getPostsByTag,
+  getPostsByUser,
+} from './thunks';
 
 const initialState = {
   items: [],
@@ -13,7 +20,14 @@ const initialState = {
   error: null,
 };
 
-const customArrThunks = [getAllPosts, getDetailsPost, getAllTags, getPostsByTag];
+const customArrThunks = [
+  getAllPosts,
+  getDetailsPost,
+  getAllTags,
+  getPostsByTag,
+  getPostByQuery,
+  getPostsByUser,
+];
 
 const status = {
   pending: 'pending',
@@ -46,6 +60,11 @@ const handleFulfilledTags = (state, { payload }) => {
   state.error = null;
   state.tags = payload;
 };
+const handleFulfilledUsersPosts = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = payload.posts;
+};
 
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
@@ -63,6 +82,8 @@ const postSlice = createSlice({
       .addCase(getDetailsPost.fulfilled, handleFulfilledDetails)
       .addCase(getAllTags.fulfilled, handleFulfilledTags)
       .addCase(getPostsByTag.fulfilled, handleFulfilled)
+      .addCase(getPostByQuery.fulfilled, handleFulfilled)
+      .addCase(getPostsByUser.fulfilled, handleFulfilledUsersPosts)
       .addMatcher(isAnyOf(...fn(pending)), handlePending)
       .addMatcher(isAnyOf(...fn(rejected)), handleRejected);
   },
