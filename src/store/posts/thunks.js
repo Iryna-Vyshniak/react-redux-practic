@@ -23,12 +23,26 @@ export const getDetailsPost = createAsyncThunk(
     }
   }
 );
+
 export const getAllTags = createAsyncThunk('posts/tags', async (_, { rejectWithValue }) => {
   try {
     const { data } = await api.getAllTags();
-    console.log('TAGS', data);
+    // console.log('TAGS', data);
     return data;
   } catch ({ response }) {
     return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
   }
 });
+
+export const getPostsByTag = createAsyncThunk(
+  'posts/tag',
+  async ({ tag, page }, { rejectWithValue }) => {
+    try {
+      const data = await api.getPostsByTags(tag, page);
+      console.log('TAGS', data);
+      return data;
+    } catch ({ response }) {
+      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    }
+  }
+);
