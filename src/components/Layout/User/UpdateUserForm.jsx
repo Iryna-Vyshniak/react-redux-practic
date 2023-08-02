@@ -51,7 +51,7 @@ export const UpdateUserForm = ({ closeModal }) => {
             <div className='relative  mb-8 w-[88px] h-[88px] rounded-full border-2 object-cover'>
               <BsPlusCircle
                 onClick={handleAddImageClick}
-                className='absolute bottom-[-5%] right-0 w-8 h-8 text-white bg-lime-600 rounded-full'
+                className='absolute bottom-[-5%] right-0 z-50 w-8 h-8 text-white bg-lime-600 rounded-full'
               />
               <label>
                 <input
@@ -72,22 +72,22 @@ export const UpdateUserForm = ({ closeModal }) => {
                   }}
                 />
                 {selectedAvatar && (
-                  <div>
+                  <div className='flex items-center justify-center w-[80px] h-[80px] rounded-full border border-slate-80 shadow-lg object-cover object-center'>
                     {/* {console.log('SELECT AVATAR', selectedAvatar)} */}
                     <img
                       src={selectedAvatar}
                       alt={userData.name}
-                      className='w-full h-full object-cover rounded-full'
+                      className='w-[80px] h-[80px] rounded-full object-cover object-center'
                     />
                   </div>
                 )}
                 {imagePreview && (
-                  <div>
+                  <div className='flex items-center justify-center w-[80px] h-[80px] rounded-full border border-slate-80 shadow-lg object-cover object-center'>
                     {/* {console.log('imagePreview', imagePreview)} */}
                     <img
                       src={imagePreview}
                       alt={userData.name}
-                      className='w-full h-full object-cover rounded-full'
+                      className='w-[80px] h-[80px] rounded-full object-cover object-center'
                     />
                   </div>
                 )}
