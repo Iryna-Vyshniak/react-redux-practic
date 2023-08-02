@@ -73,4 +73,10 @@ export const updateProfile = async (credentials) => {
   return result;
 };
 
+export const getAllUsers = async () => {
+  const { data: result } = await instance.get('/auth/users');
+  // console.log('USERS', result);
+  return result;
+};
+
 export default instance;
