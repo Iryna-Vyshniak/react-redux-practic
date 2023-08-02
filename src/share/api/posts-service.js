@@ -42,8 +42,23 @@ export const getPosts = async (page) => {
 export const getAllTags = async () => {
   try {
     const response = await publicInstance.get('/posts/tags');
-    console.log('RESPONSE', response);
+    // console.log('RESPONSE', response);
     return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPostsByTags = async (tag, page) => {
+  try {
+    const response = await publicInstance.get(`/posts/tags/${tag}`, {
+      params: {
+        page,
+        limit: 6,
+      },
+    });
+    // console.log('RESPONSE', response);
+    return response.data;
   } catch (error) {
     console.log(error);
   }
