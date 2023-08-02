@@ -8,7 +8,6 @@ import { selectPosts } from '../../store/posts/selectors';
 export const PostsList = () => {
   const location = useLocation();
   const posts = useSelector(selectPosts);
-  // console.log('LIST', posts);
 
   return (
     <>
