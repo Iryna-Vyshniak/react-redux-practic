@@ -1,6 +1,6 @@
 import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiTwotoneDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../store/auth/selectors';
+import { getAuth, getUser } from '../store/auth/selectors';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { selectIsLoading, selectPostDetails } from '../store/posts/selectors';
 import { useEffect } from 'react';
@@ -12,6 +12,7 @@ const PostDetailsPage = () => {
   const post = useSelector(selectPostDetails);
   const user = useSelector(getUser);
   const isLoading = useSelector(selectIsLoading);
+  const { isLogin } = useSelector(getAuth);
   const { id } = useParams();
   const location = useLocation();
   const BackLinkHref = location.state?.from ?? '/posts';
@@ -46,7 +47,7 @@ const PostDetailsPage = () => {
                   <img
                     src={post.owner.avatarUrl}
                     alt='avatar'
-                    className='w-[24px] h-[24px] object-cover object-center'
+                    className='w-[24px] h-[24px] rounded-full object-cover object-center'
                   />
                 </div>
               )}
@@ -85,7 +86,7 @@ const PostDetailsPage = () => {
               </button>
             </div>
 
-            {post?.owner?._id === user._id && (
+            {isLogin && post?.owner?._id === user._id && (
               <div className='flex gap-3'>
                 <Link
                   to={`/posts`}
@@ -104,7 +105,7 @@ const PostDetailsPage = () => {
           </div>
         </div>
       )}
-      {user.name && (
+      {isLogin && (
         <div className='w-full md:w-[450px] flex flex-col gap-3 px-4'>
           <h2 className='text-lg text-[var(--color-text)] opacity-80'>Add comment</h2>
           <form>
