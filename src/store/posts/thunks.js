@@ -39,10 +39,33 @@ export const getPostsByTag = createAsyncThunk(
   async ({ tag, page }, { rejectWithValue }) => {
     try {
       const data = await api.getPostsByTags(tag, page);
-      console.log('TAGS', data);
+      //  console.log('TAGS', data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
     }
   }
 );
+
+export const getPostByQuery = createAsyncThunk(
+  'posts/search',
+  async (name, { rejectWithValue }) => {
+    try {
+      const data = await api.getPostByQuery(name);
+      // console.log('SEARCH POSTS', data);
+      return data;
+    } catch ({ response }) {
+      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    }
+  }
+);
+
+export const getPostsByUser = createAsyncThunk('posts/user', async (name, { rejectWithValue }) => {
+  try {
+    const data = await api.getUsersPosts(name);
+    console.log('USER POSTS', data);
+    return data;
+  } catch ({ response }) {
+    return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+  }
+});
