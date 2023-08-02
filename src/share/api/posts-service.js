@@ -74,3 +74,28 @@ export const getDetailsPost = async (id) => {
     console.log(error);
   }
 };
+
+export const getPostByQuery = async (query) => {
+  try {
+    const response = await publicInstance.get(`/posts/search`, {
+      params: {
+        name: query,
+        limit: 6,
+      },
+    });
+    // console.log('RESPONSE', response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUsersPosts = async (name) => {
+  try {
+    const response = await instance.get(`/posts/users/${name}`);
+    console.log('RESPONSE', response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
