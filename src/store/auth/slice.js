@@ -1,7 +1,14 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getProfileThunk, loginThunk, logOutThunk, updateUserDataThunk } from './thunk';
+import {
+  getProfileThunk,
+  loginThunk,
+  logOutThunk,
+  updateUserDataThunk,
+  getAllUsersThunk,
+} from './thunk';
 
 const initialState = {
+  users: [],
   user: {},
   token: '',
   isLogin: false,
@@ -27,6 +34,12 @@ const handleFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
   state.isLogin = true;
+};
+
+const handleFulfilledUsers = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.users = payload;
 };
 
 const handleFulfilledUpdate = (state, { payload }) => {
@@ -70,6 +83,7 @@ const authSlice = createSlice({
       .addCase(getProfileThunk.fulfilled, handleFulfilled)
       .addCase(logOutThunk.fulfilled, handleFulfilledLogout)
       .addCase(updateUserDataThunk.fulfilled, handleFulfilledUpdate)
+      .addCase(getAllUsersThunk.fulfilled, handleFulfilledUsers)
       .addCase(getProfileThunk.rejected, handleRejectedProfile)
       .addMatcher(
         isAnyOf(
