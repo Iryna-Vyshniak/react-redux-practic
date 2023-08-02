@@ -5,3 +5,4 @@ export const getAuth = ({ auth }) => {
   return { isLogin, token };
 };
 export const getUser = ({ auth }) => auth.user;
+export const getUsers = ({ auth }) => auth.users;
