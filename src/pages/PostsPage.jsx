@@ -9,7 +9,7 @@ import {
 } from '../store/posts/selectors';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getAllPosts, getAllTags } from '../store/posts/thunks';
+import { getAllPosts } from '../store/posts/thunks';
 import { Pagination } from '../components/Pagination';
 import { PostsList } from '../components/Posts/PostsList';
 import { TagsBlock } from '../components/Posts/TagsBlock';
@@ -29,7 +29,7 @@ const PostsPage = () => {
   const tags = useSelector(selectTags);
 
   useEffect(() => {
-    dispatch(getAllPosts({ page }));
+    dispatch(getAllPosts(page));
   }, [dispatch, page]);
 
   return (
@@ -44,12 +44,12 @@ const PostsPage = () => {
           </section>
         )}
 
-        <section className='flex flex-col items-center justify-between p-5 min-h-[85vh]'>
+        <section className='flex flex-col flex-grow items-center justify-between p-5'>
           <div></div>
           {isLoading ? (
             <div className='text-[var(--color-text)]'>...Loading</div>
           ) : posts?.length > 0 ? (
-            <div className='w-full flex flex-col gap-6 md:basis-4/5'>
+            <div className='flex flex-col items-center juctify-between gap-6 md:basis-4/5 w-full'>
               <PostsList />
             </div>
           ) : (
