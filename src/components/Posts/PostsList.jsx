@@ -46,7 +46,7 @@ export const PostsList = () => {
                     <ul className='mt-2 text-xs text-[var(--color-text)]  opacity-50'>
                       {post.tags.map((tag) => (
                         <li key={tag}>
-                          <Link to={`posts/tags/${tag}`}>#{tag}</Link>
+                          <Link to={`tags/${tag}`}>#{tag}</Link>
                         </li>
                       ))}
                     </ul>
@@ -68,8 +68,10 @@ export const PostsList = () => {
                     </button>
                   </div>
                   <Link
-                    to={`${post._id}`}
-                    state={{ from: location }}
+                    to={{
+                      pathname: `/posts/${post._id}`,
+                      state: { from: location },
+                    }}
                     className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)] bg-[var(--button-color-active)] rounded-lg hover:bg-[var(--buttonHover)] focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
                   >
                     Read more
