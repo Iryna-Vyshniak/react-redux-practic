@@ -24,7 +24,7 @@ export const getProductsByQueryThunk = createAsyncThunk(
     // console.log(name);
     try {
       const data = await api.getProductsByQuery(name);
-      //  console.log(data);
+      console.log(data);
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
