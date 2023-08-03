@@ -1,19 +1,14 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUsers } from '../../store/auth/selectors';
-import { getAllUsersThunk } from '../../store/auth/thunk';
+
 
 export const PopularUsers = () => {
-  const dispatch = useDispatch();
+ 
   const popularUsers = useSelector(getUsers);
   // console.log(popularUsers);
 
   const mostPopularUsers = popularUsers?.length > 3 ? popularUsers?.slice(0, 3) : popularUsers;
-
-  useEffect(() => {
-    dispatch(getAllUsersThunk());
-  }, [dispatch]);
 
   return (
     <>

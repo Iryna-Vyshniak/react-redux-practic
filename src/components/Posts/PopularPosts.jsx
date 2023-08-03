@@ -1,19 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllPosts } from '../../store/posts/thunks';
+import { useSelector } from 'react-redux';
 import { selectPopularPosts } from '../../store/posts/selectors';
 import { Link } from 'react-router-dom';
 
 export const PopularPosts = () => {
-  const dispatch = useDispatch();
   const popularPosts = useSelector(selectPopularPosts);
   // console.log(popularPosts);
 
   const lastPopularPosts = popularPosts?.slice(0, 3);
-
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
   const shortenedTitles = (obj) => {
     if (obj.title.length > 30) {
