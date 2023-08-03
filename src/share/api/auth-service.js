@@ -69,7 +69,7 @@ export const getProfile = async (token) => {
 
 export const updateProfile = async (credentials) => {
   const { data: result } = await instance.patch('/auth/user', credentials);
-  console.log('CURRENT USER update', result);
+  // console.log('CURRENT USER update', result);
   return result;
 };
 
