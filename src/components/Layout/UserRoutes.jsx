@@ -23,15 +23,15 @@ const UserRoutes = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path='/posts' element={<PostsPage />} />
-          <Route path='/posts/tags/:tag' element={<PostsByTagPage />} />
-          <Route path='/posts/:id' element={<PostDetailsPage />} />
+          <Route path='posts' element={<PostsPage />} />
+          <Route path='/tags/:tag' element={<PostsByTagPage />} />
+          <Route path='posts/:id' element={<PostDetailsPage />} />
           <Route element={<PublicRoute />}>
             <Route path='/signup' element={<RegisterPage />} />
             <Route path='/signin' element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path='/posts/users/:user' element={<UsersPostsPage />} />
+            <Route path='posts/users/:user' element={<UsersPostsPage />} />
             <Route path='/products' element={<ProductPage />} />
             <Route path='/products/add-product' element={<CreateProductsPage />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
