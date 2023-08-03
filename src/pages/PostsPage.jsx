@@ -9,7 +9,7 @@ import {
 } from '../store/posts/selectors';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getAllPosts, getPostByQuery } from '../store/posts/thunks';
+import { getAllPosts, getAllTags, getPostByQuery } from '../store/posts/thunks';
 import { Pagination } from '../components/Pagination';
 import { PostsList } from '../components/Posts/PostsList';
 import { TagsBlock } from '../components/Posts/TagsBlock';
@@ -18,6 +18,7 @@ import { BackLink } from '../components/BackLink';
 import { PopularPosts } from '../components/Posts/PopularPosts';
 import { PopularUsers } from '../components/Posts/PopularUsers';
 import { getAuth } from '../store/auth/selectors';
+import { getAllUsersThunk } from '../store/auth/thunk';
 
 const PostsPage = () => {
   const dispatch = useDispatch();
@@ -37,8 +38,46 @@ const PostsPage = () => {
   const tags = useSelector(selectTags);
 
   useEffect(() => {
-    name !== '' ? dispatch(getPostByQuery(name)) : dispatch(getAllPosts(page));
+    // Виклик дії для отримання списку тегів
+    dispatch(getAllTags());
+    // Виклик дії для отримання списку користувачів
+    dispatch(getAllUsersThunk());
+
+    // Перевірка умови для вибору, яку дію диспетчити
+    if (name !== '') {
+      dispatch(getPostByQuery(name));
+    } else {
+      dispatch(getAllPosts(page));
+    }
   }, [dispatch, page, name]);
+
+  // ---- 2nd variant --------------------
+  // useEffect(() => {
+  //   dispatch(getAllTags());
+  //   dispatch(getAllUsersThunk());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   name !== '' ? dispatch(getPostByQuery(name)) : dispatch(getAllPosts(page));
+  // }, [dispatch, page, name]);
+
+  // ---- 3rd variant----------------------------
+
+  // useEffect(() => {
+  //   dispatch(getAllPosts());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getAllUsersThunk());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getAllPosts(page));
+  // }, [dispatch, page]);
+
+  // useEffect(() => {
+  //   dispatch(getPostByQuery(name));
+  // }, [dispatch, name]);
 
   const handleSearchChange = ({ target }) => {
     const inputValue = target.value;
