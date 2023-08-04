@@ -32,20 +32,20 @@ export const getPosts = async (page) => {
         limit: 6,
       },
     });
-    // console.log('RESPONSE', response);
+    //  console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };
 
 export const getAllTags = async () => {
   try {
     const response = await publicInstance.get('/posts/tags');
-    // console.log('RESPONSE', response);
+    //  console.log('RESPONSE', response);
     return response;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };
 
@@ -57,21 +57,21 @@ export const getPostsByTags = async (tag, page) => {
         limit: 6,
       },
     });
-    // console.log('RESPONSE', response);
+    //  console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };
 
 export const getDetailsPost = async (id) => {
-  // console.log('servise id', id);
+  //  console.log('servise id', id);
   try {
     const response = await publicInstance.get(`/posts/${id}`);
-    // console.log('RESPONSE', response);
+    //  console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };
 
@@ -83,19 +83,39 @@ export const getPostByQuery = async (query) => {
         limit: 6,
       },
     });
-    // console.log('RESPONSE', response);
+    //  console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
   }
 };
 
 export const getUsersPosts = async (name) => {
   try {
     const response = await instance.get(`/posts/users/${name}`);
-    console.log('RESPONSE', response);
+    // console.log('RESPONSE', response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
+  }
+};
+
+export const getFavoritesPosts = async (id) => {
+  try {
+    const response = await instance.get(`/posts/${id}/favorites`);
+    // console.log('RESPONSE all favorites', response);
+    return response;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const setFavoritePost = async (id) => {
+  try {
+    const response = await instance.post(`/posts/${id}/favorite`);
+    // console.log('RESPONSE set fav', response.data);
+    return response;
+  } catch (error) {
+    console.log(error.response.data);
   }
 };
