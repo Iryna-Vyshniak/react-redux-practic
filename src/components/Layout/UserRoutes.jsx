@@ -16,6 +16,7 @@ import PostsPage from '../../pages/PostsPage';
 import PostDetailsPage from '../../pages/PostDetailsPage';
 import PostsByTagPage from '../../pages/PostsByTagPage';
 import UsersPostsPage from '../../pages/UsersPostsPage';
+import FavoritesPostsPage from '../../pages/FavoritesPostsPage';
 
 const UserRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const UserRoutes = () => {
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path='posts/users/:user' element={<UsersPostsPage />} />
+            <Route path='posts/:id/favorites' element={<FavoritesPostsPage />} />
             <Route path='/products' element={<ProductPage />} />
             <Route path='/products/add-product' element={<CreateProductsPage />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
