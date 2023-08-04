@@ -1,27 +1,67 @@
 import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiTwotoneDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuth, getUser } from '../store/auth/selectors';
+import { getAuth, getUser, selectIsPostLiked } from '../store/auth/selectors';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { selectIsLoading, selectPostDetails } from '../store/posts/selectors';
 import { useEffect } from 'react';
-import { getDetailsPost } from '../store/posts/thunks';
+import { getDetailsPost, setLikedPost } from '../store/posts/thunks';
 import { BackLink } from '../components/BackLink';
+import { LikeButton } from '../components/LikeButton';
+import { getProfileThunk } from '../store/auth/thunk';
+import { useState } from 'react';
 
 const PostDetailsPage = () => {
-  const dispatch = useDispatch();
-  const post = useSelector(selectPostDetails);
-  const user = useSelector(getUser);
   const isLoading = useSelector(selectIsLoading);
   const { isLogin } = useSelector(getAuth);
+  const user = useSelector(getUser);
   const { id } = useParams();
   const location = useLocation();
   const BackLinkHref = location.state?.from ?? '/posts';
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getProfileThunk());
     dispatch(getDetailsPost(id));
   }, [dispatch, id]);
 
-  //   const { imageUrl, title, createdAt, text, viewsCount, comments } = post;
+  const post = useSelector(selectPostDetails);
+  const count = post?.likedBy.length;
+  const isPostLiked = useSelector(selectIsPostLiked(id));
+
+  const [countLikes, setCountLikes] = useState(count);
+  const [isVote, setIsVote] = useState(false);
+
+  const handleToggleLike = async () => {
+    // Виконайте вашу дію з Redux для додавання / видалення вподобання
+    await dispatch(setLikedPost(id));
+
+    // Оновлення станів після кліку
+    setIsVote((prevIsVote) => !prevIsVote);
+
+    // Оновлення лайків на основі isVote
+    setCountLikes((prevCount) => (!isVote ? prevCount + 1 : prevCount - 1));
+  };
+
+  // Перевизначте ефект для оновлення countLikes при зміні count
+  useEffect(() => {
+    if (count !== undefined) {
+      setCountLikes(count);
+    } else {
+      setCountLikes(0);
+    }
+  }, [count]);
+
+  // Перевизначте ефект для оновлення isVote при зміні isPostLiked
+  useEffect(() => {
+    setIsVote(isPostLiked);
+  }, [isPostLiked]);
+  // console.log('COUNT', count);
+  // console.log('USER', user);
+  // console.log('IS POST LIKED', isPostLiked);
+
+  // console.log(countLikes);
+  // console.log('isVote', isVote);
+
   return (
     <section className='flex flex-col gap-5 py-3'>
       <div className='px-4'>
@@ -60,9 +100,7 @@ const PostDetailsPage = () => {
           </div>
           <ul className='mb-5 text-xs text-[var(--color-text)]  opacity-50'>
             {post.tags.map((tag) => (
-              <li key={tag}>
-                <Link to={`posts/tags/${tag}`}>#{tag}</Link>
-              </li>
+              <li key={tag}>#{tag}</li>
             ))}
           </ul>
           <div className='mb-5'>
@@ -72,6 +110,9 @@ const PostDetailsPage = () => {
           </div>
           <div className='flex gap-3 items-center justify-between mb-5'>
             <div className='flex gap-3'>
+              <LikeButton isPostLiked={isVote} handleToggleLike={handleToggleLike} />
+
+              <span className='text-sm text-[var(--color-text)]  opacity-50'>{countLikes}</span>
               <button
                 type='button'
                 className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
