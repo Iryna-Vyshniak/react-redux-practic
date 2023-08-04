@@ -60,6 +60,7 @@ const handleFulfilledTags = (state, { payload }) => {
   state.error = null;
   state.tags = payload;
 };
+
 const handleFulfilledUsersPosts = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
