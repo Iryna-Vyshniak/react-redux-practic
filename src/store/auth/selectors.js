@@ -6,3 +6,9 @@ export const getAuth = ({ auth }) => {
 };
 export const getUser = ({ auth }) => auth.user;
 export const getUsers = ({ auth }) => auth.users;
+
+export const selectFavoritesPosts = (state) => state.auth.favorites;
+
+export const selectIsPostLiked = (postId) => (state) => {
+  return state.auth.user.favorites.includes(postId);
+};
