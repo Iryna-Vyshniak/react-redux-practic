@@ -5,13 +5,13 @@ import { AiFillEye, AiOutlineMessage } from 'react-icons/ai';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 import { selectPosts } from '../../store/posts/selectors';
-import { getUser } from '../../store/auth/selectors';
+import { getAuth, getUser } from '../../store/auth/selectors';
 
 export const PostsList = () => {
   const location = useLocation();
   const posts = useSelector(selectPosts);
   const user = useSelector(getUser);
-  // console.log(user);
+  const { isLogin } = useSelector(getAuth);
 
   const like = (post, user) => {
     if (post.likedBy.includes(user._id)) {
@@ -56,28 +56,27 @@ export const PostsList = () => {
                     </h3>
                     <ul className='mt-2 text-xs text-[var(--color-text)]  opacity-50'>
                       {post.tags.map((tag) => (
-                        <li key={tag}>
-                          #{tag}
-                          {/* <Link to={`tags/${tag}`}>#{tag}</Link> */}
-                        </li>
+                        <li key={tag}>#{tag}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
                 <div className='flex flex-row items-center justify-between p-5'>
                   <div className='flex items-center gap-3'>
-                    <Link
-                      to={{
-                        pathname: `/posts/${post._id}/favorites`,
-                        state: { from: location },
-                      }}
-                      className='flex items-center gap-3'
-                    >
-                      {like(post, user)}
-                      <span className='text-sm text-[var(--color-text)]  opacity-50'>
-                        {post.likedBy.length}
-                      </span>
-                    </Link>
+                    {isLogin && (
+                      <Link
+                        to={{
+                          pathname: `/posts/${post._id}/favorites`,
+                          state: { from: location },
+                        }}
+                        className='flex items-center gap-3'
+                      >
+                        {like(post, user)}
+                        <span className='text-sm text-[var(--color-text)]  opacity-50'>
+                          {post.likedBy.length}
+                        </span>
+                      </Link>
+                    )}
 
                     <button
                       type='button'
@@ -92,15 +91,17 @@ export const PostsList = () => {
                       <AiOutlineMessage /> <span>{post.comments?.length || 0}</span>
                     </button>
                   </div>
-                  <Link
-                    to={{
-                      pathname: `/posts/${post._id}`,
-                      state: { from: location },
-                    }}
-                    className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)] bg-[var(--button-color-active)] rounded-lg hover:bg-[var(--buttonHover)] focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
-                  >
-                    Read more
-                  </Link>
+                  {isLogin && (
+                    <Link
+                      to={{
+                        pathname: `/posts/${post._id}`,
+                        state: { from: location },
+                      }}
+                      className='inline-flex items-center px-3 py-2 text-sm font-medium text-center  text-[var(--button-color-text)] bg-[var(--button-color-active)] rounded-lg hover:bg-[var(--buttonHover)] focus:ring-2 focus:outline-none focus:ring-green-300 shadow-xl hover:shadow-md'
+                    >
+                      Read more
+                    </Link>
+                  )}
                 </div>
               </>
             </li>

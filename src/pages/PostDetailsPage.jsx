@@ -110,9 +110,14 @@ const PostDetailsPage = () => {
           </div>
           <div className='flex gap-3 items-center justify-between mb-5'>
             <div className='flex gap-3'>
-              <LikeButton isPostLiked={isVote} handleToggleLike={handleToggleLike} />
+              {isLogin && (
+                <>
+                  <LikeButton isPostLiked={isVote} handleToggleLike={handleToggleLike} />
 
-              <span className='text-sm text-[var(--color-text)]  opacity-50'>{countLikes}</span>
+                  <span className='text-sm text-[var(--color-text)]  opacity-50'>{countLikes}</span>
+                </>
+              )}
+
               <button
                 type='button'
                 className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
