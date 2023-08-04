@@ -10,5 +10,5 @@ export const getUsers = ({ auth }) => auth.users;
 export const selectFavoritesPosts = (state) => state.auth.favorites;
 
 export const selectIsPostLiked = (postId) => (state) => {
-  return state.auth.user.favorites.includes(postId);
+  return state.auth.user?.favorites?.includes(postId);
 };
