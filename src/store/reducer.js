@@ -12,15 +12,22 @@ import { productsReducer } from './products/slice';
 import { postReducer } from './posts/slice';
 import { themeReducer } from './theme.js/slice';
 
+// const favoritesTransform = {
+//   in: (state) => state,
+//   out: (state) => state,
+// };
+
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'user'],
+  whitelist: ['token', 'user', 'favorites'],
+  // transforms: [favoritesTransform],
 };
 const persistConfigPosts = {
   key: 'posts',
   storage,
-  whitelist: ['items', 'currentPage', 'tags'],
+  whitelist: ['items', 'currentPage', 'tags', 'likedBy'],
+  // transforms: [favoritesTransform],
 };
 
 const persistConfigProduct = {
