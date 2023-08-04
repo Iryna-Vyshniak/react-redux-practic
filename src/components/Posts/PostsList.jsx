@@ -2,12 +2,23 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 import { AiFillEye, AiOutlineMessage } from 'react-icons/ai';
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
 
 import { selectPosts } from '../../store/posts/selectors';
+import { getUser } from '../../store/auth/selectors';
 
 export const PostsList = () => {
   const location = useLocation();
   const posts = useSelector(selectPosts);
+  const user = useSelector(getUser);
+  // console.log(user);
+
+  const like = (post, user) => {
+    if (post.likedBy.includes(user._id)) {
+      return <BsHeartFill className='text-red-600' />;
+    }
+    return <BsHeart />;
+  };
 
   return (
     <>
@@ -16,7 +27,7 @@ export const PostsList = () => {
           {posts?.map((post) => (
             <li
               key={post._id}
-              className='flex flex-col max-w-sm md:max-w-full bg-[var(--backgroundCard)] border border-gray-200 rounded-lg shadow '
+              className='relative flex flex-col max-w-sm md:max-w-full bg-[var(--backgroundCard)] border border-gray-200 rounded-lg shadow '
             >
               <>
                 {post.imageUrl && (
@@ -29,6 +40,7 @@ export const PostsList = () => {
                   />
                   // </div>
                 )}
+
                 <div className='mb-auto p-5'>
                   <div className='flex space-x-2 items-center justify-between'>
                     <span className='text-xs text-[var(--color-text)] opacity-50'>
@@ -45,7 +57,8 @@ export const PostsList = () => {
                     <ul className='mt-2 text-xs text-[var(--color-text)]  opacity-50'>
                       {post.tags.map((tag) => (
                         <li key={tag}>
-                          <Link to={`tags/${tag}`}>#{tag}</Link>
+                          #{tag}
+                          {/* <Link to={`tags/${tag}`}>#{tag}</Link> */}
                         </li>
                       ))}
                     </ul>
@@ -53,6 +66,19 @@ export const PostsList = () => {
                 </div>
                 <div className='flex flex-row items-center justify-between p-5'>
                   <div className='flex items-center gap-3'>
+                    <Link
+                      to={{
+                        pathname: `/posts/${post._id}/favorites`,
+                        state: { from: location },
+                      }}
+                      className='flex items-center gap-3'
+                    >
+                      {like(post, user)}
+                      <span className='text-sm text-[var(--color-text)]  opacity-50'>
+                        {post.likedBy.length}
+                      </span>
+                    </Link>
+
                     <button
                       type='button'
                       className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
