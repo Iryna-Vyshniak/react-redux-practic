@@ -6,10 +6,12 @@ import {
   updateUserDataThunk,
   getAllUsersThunk,
 } from './thunk';
+import { setLikedPost, getLikedPost } from '../posts/thunks';
 
 const initialState = {
   users: [],
   user: {},
+  favorites: [],
   token: '',
   isLogin: false,
   isLoading: false,
@@ -62,6 +64,23 @@ const handleFulfilledLogout = (state) => {
   state.isLogin = false;
 };
 
+const handleFulfilledLike = (state, { payload }) => {
+  // console.log('PAYLOAD', payload);
+  state.isLoading = false;
+  state.error = null;
+  const newFavorites = state.user.favorites.includes(payload)
+    ? state.user.favorites.filter((postId) => postId !== payload)
+    : [...state.user.favorites, payload];
+  state.user = { ...state.user, favorites: newFavorites };
+  // state.user = { ...state.user, favorites: payload };
+};
+
+const handleFulfilledLiked = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.favorites = payload;
+};
+
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
@@ -85,6 +104,9 @@ const authSlice = createSlice({
       .addCase(updateUserDataThunk.fulfilled, handleFulfilledUpdate)
       .addCase(getAllUsersThunk.fulfilled, handleFulfilledUsers)
       .addCase(getProfileThunk.rejected, handleRejectedProfile)
+
+      .addCase(getLikedPost.fulfilled, handleFulfilledLiked)
+      .addCase(setLikedPost.fulfilled, handleFulfilledLike)
       .addMatcher(
         isAnyOf(
           loginThunk.pending,
