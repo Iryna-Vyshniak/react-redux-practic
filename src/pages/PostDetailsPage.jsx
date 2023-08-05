@@ -9,6 +9,7 @@ import { BackLink } from '../components/BackLink';
 import { LikeButton } from '../components/LikeButton';
 import { getProfileThunk } from '../store/auth/thunk';
 import { useState } from 'react';
+import { CommentsPost } from '../components/Posts/CommentsPost';
 
 const PostDetailsPage = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -151,32 +152,7 @@ const PostDetailsPage = () => {
           </div>
         </div>
       )}
-      {isLogin && (
-        <div className='w-full md:w-[450px] flex flex-col gap-3 px-4'>
-          <h2 className='text-lg text-[var(--color-text)] opacity-80'>Add comment</h2>
-          <form>
-            <textarea
-              type='text'
-              placeholder='Write comment...'
-              className='mb-2 p-3 w-full h-[120px]  text-xs text-[var(--color-text)] bg-[var(--backgroundCard)] resize-none outline-none border border-slate-80 shadow-lg'
-            />
-            <div className='flex flex-row gap-3'>
-              <button
-                type='submit'
-                className='px-3 py-2 text-sm font-medium text-center  text-gray-900 hover:text-white bg-[#d1ffdf] rounded-lg hover:bg-lime-700 focus:ring-2 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 shadow-xl hover:shadow-md'
-              >
-                Add
-              </button>
-              <button
-                type='click'
-                className='px-3 py-2 text-sm font-medium text-center  text-gray-900 hover:text-white bg-[#ffd8e3] rounded-lg hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 shadow-xl hover:shadow-md'
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+      <CommentsPost />
     </section>
   );
 };
