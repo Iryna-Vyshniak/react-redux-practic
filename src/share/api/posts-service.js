@@ -119,3 +119,23 @@ export const setFavoritePost = async (id) => {
     console.log(error.response.data);
   }
 };
+
+export const getComments = async (id) => {
+  try {
+    const response = await instance.get(`/posts/${id}/comments`);
+    //console.log('RESPONSE get all comments', response);
+    return response;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
+
+export const createComment = async (id, { value }) => {
+  try {
+    const response = await instance.post(`/posts/${id}/comments`, { value });
+    //console.log('RESPONSE add comment', response);
+    return response;
+  } catch (error) {
+    console.log(error.response.data);
+  }
+};
