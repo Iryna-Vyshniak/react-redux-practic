@@ -6,6 +6,7 @@ export const selectPostDetails = (state) => state.posts.postDetails;
 
 export const selectPopularPosts = (state) => state.posts.popularPosts;
 export const selectTags = (state) => state.posts.tags;
+export const selectComments = (state) => state.posts.comments;
 
 export const selectCurrentPage = (state) => state.posts.currentPage;
 export const selectTotalPages = (state) => state.posts.totalPages;
