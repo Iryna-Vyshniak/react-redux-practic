@@ -26,7 +26,7 @@ const persistConfig = {
 const persistConfigPosts = {
   key: 'posts',
   storage,
-  whitelist: ['items', 'currentPage', 'tags', 'likedBy'],
+  whitelist: ['items', 'currentPage', 'tags', 'likedBy', 'comments'],
   // transforms: [favoritesTransform],
 };
 
