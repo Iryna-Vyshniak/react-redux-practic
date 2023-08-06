@@ -1,49 +1,56 @@
-import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiTwotoneDelete } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiTwotoneDelete } from 'react-icons/ai';
 import { getAuth, getUser, selectIsPostLiked } from '../store/auth/selectors';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { selectIsLoading, selectPostDetails } from '../store/posts/selectors';
-import { useEffect } from 'react';
-import { getDetailsPost, setLikedPost } from '../store/posts/thunks';
+import { selectComments, selectIsLoading, selectPostDetails } from '../store/posts/selectors';
+import { getComments, getDetailsPost, setLikedPost } from '../store/posts/thunks';
 import { BackLink } from '../components/BackLink';
 import { LikeButton } from '../components/LikeButton';
 import { getProfileThunk } from '../store/auth/thunk';
-import { useState } from 'react';
 import { CommentsPost } from '../components/Posts/CommentsPost';
 
 const PostDetailsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const { isLogin } = useSelector(getAuth);
   const user = useSelector(getUser);
+  const comments = useSelector(selectComments);
+  const post = useSelector(selectPostDetails);
+
+  const dispatch = useDispatch();
   const { id } = useParams();
   const location = useLocation();
   const BackLinkHref = location.state?.from ?? '/posts';
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProfileThunk());
-    dispatch(getDetailsPost(id));
-  }, [dispatch, id]);
-
-  const post = useSelector(selectPostDetails);
   const count = post?.likedBy.length;
+
   const isPostLiked = useSelector(selectIsPostLiked(id));
 
   const [countLikes, setCountLikes] = useState(count);
   const [isVote, setIsVote] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [loadedComments, setLoadedComments] = useState(false);
+
+  useEffect(() => {
+    dispatch(getProfileThunk());
+    dispatch(getDetailsPost(id));
+    dispatch(getComments(id));
+  }, [dispatch, id]);
+
+  const handleShowComments = async () => {
+    if (!loadedComments) {
+      setLoadedComments(true);
+    }
+    setShowComments(!showComments);
+  };
 
   const handleToggleLike = async () => {
-    // Виконайте вашу дію з Redux для додавання / видалення вподобання
     await dispatch(setLikedPost(id));
 
-    // Оновлення станів після кліку
     setIsVote((prevIsVote) => !prevIsVote);
 
-    // Оновлення лайків на основі isVote
     setCountLikes((prevCount) => (!isVote ? prevCount + 1 : prevCount - 1));
   };
 
-  // Перевизначте ефект для оновлення countLikes при зміні count
   useEffect(() => {
     if (count !== undefined) {
       setCountLikes(count);
@@ -52,10 +59,10 @@ const PostDetailsPage = () => {
     }
   }, [count]);
 
-  // Перевизначте ефект для оновлення isVote при зміні isPostLiked
   useEffect(() => {
     setIsVote(isPostLiked);
   }, [isPostLiked]);
+
   // console.log('COUNT', count);
   // console.log('USER', user);
   // console.log('IS POST LIKED', isPostLiked);
@@ -68,7 +75,7 @@ const PostDetailsPage = () => {
       <div className='px-4'>
         <BackLink to={BackLinkHref}>Posts</BackLink>
       </div>
-
+      {isLoading && <div>Loading...</div>}
       {!isLoading && post && (
         <div className='px-4'>
           {post.imageUrl && (
@@ -118,7 +125,6 @@ const PostDetailsPage = () => {
                   <span className='text-sm text-[var(--color-text)]  opacity-50'>{countLikes}</span>
                 </>
               )}
-
               <button
                 type='button'
                 className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
@@ -127,9 +133,10 @@ const PostDetailsPage = () => {
               </button>
               <button
                 type='button'
+                onClick={handleShowComments}
                 className='flex items-center justify-center gap-2 text-sm text-[var(--color-text)]  opacity-50'
               >
-                <AiOutlineMessage /> <span>{post.comments?.length || 0}</span>
+                <AiOutlineMessage /> <span>{comments?.length || 0}</span>
               </button>
             </div>
 
@@ -152,7 +159,7 @@ const PostDetailsPage = () => {
           </div>
         </div>
       )}
-      <CommentsPost />
+      {showComments && <CommentsPost />}
     </section>
   );
 };
