@@ -2,10 +2,12 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getAllPosts,
   getAllTags,
+  getComments,
   getDetailsPost,
   getPostByQuery,
   getPostsByTag,
   getPostsByUser,
+  addComment,
 } from './thunks';
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
   postDetails: null,
   popularPosts: [],
   tags: [],
+  comments: [],
   currentPage: 1,
   totalPages: 0,
   limit: null,
@@ -27,6 +30,8 @@ const customArrThunks = [
   getPostsByTag,
   getPostByQuery,
   getPostsByUser,
+  getComments,
+  addComment,
 ];
 
 const status = {
@@ -50,6 +55,7 @@ const handleFulfilled = (state, { payload }) => {
   state.currentPage = payload.currentPage;
   state.totalPages = payload.totalPages;
 };
+
 const handleFulfilledDetails = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
@@ -59,6 +65,20 @@ const handleFulfilledTags = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.tags = payload;
+};
+
+const handleFulfilledComments = (state, { payload }) => {
+  // console.log('PAYLOAD', payload);
+  state.isLoading = false;
+  state.error = null;
+  state.comments = payload;
+};
+
+const handleFulfilledComment = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.comments.push(payload);
+  //state.comments = [...state.comments, ...payload];
 };
 
 const handleFulfilledUsersPosts = (state, { payload }) => {
@@ -85,6 +105,8 @@ const postSlice = createSlice({
       .addCase(getPostsByTag.fulfilled, handleFulfilled)
       .addCase(getPostByQuery.fulfilled, handleFulfilled)
       .addCase(getPostsByUser.fulfilled, handleFulfilledUsersPosts)
+      .addCase(getComments.fulfilled, handleFulfilledComments)
+      .addCase(addComment.fulfilled, handleFulfilledComment)
       .addMatcher(isAnyOf(...fn(pending)), handlePending)
       .addMatcher(isAnyOf(...fn(rejected)), handleRejected);
   },
