@@ -12,6 +12,7 @@ const initialState = {
   users: [],
   user: {},
   favorites: [],
+  messages: [],
   token: '',
   isLogin: false,
   isLoading: false,
