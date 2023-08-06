@@ -89,3 +89,26 @@ export const setLikedPost = createAsyncThunk('posts/like', async (id, { rejectWi
     return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
   }
 });
+
+export const getComments = createAsyncThunk('posts/comments', async (id, { rejectWithValue }) => {
+  try {
+    const { data } = await api.getComments(id);
+    //console.log('COMMENTS GET', data);
+    return data;
+  } catch ({ response }) {
+    return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+  }
+});
+
+export const addComment = createAsyncThunk(
+  'posts/comment',
+  async ({ id, value }, { rejectWithValue }) => {
+    try {
+      const { data } = await api.createComment(id, { value });
+      //console.log('COMMENTS ADD', data.updatedPost.comments);
+      return data.updatedPost.comments;
+    } catch ({ response }) {
+      return rejectWithValue(`Ooops! Wrong... Try again or update browser`);
+    }
+  }
+);
