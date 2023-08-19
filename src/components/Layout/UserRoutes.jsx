@@ -17,6 +17,7 @@ import PostDetailsPage from '../../pages/PostDetailsPage';
 import PostsByTagPage from '../../pages/PostsByTagPage';
 import UsersPostsPage from '../../pages/UsersPostsPage';
 import FavoritesPostsPage from '../../pages/FavoritesPostsPage';
+import CalendarPage from '../../pages/CalendarPage';
 
 const UserRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const UserRoutes = () => {
             <Route path='/products' element={<ProductPage />} />
             <Route path='/products/add-product' element={<CreateProductsPage />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
+            <Route path='/calendar' element={<CalendarPage />} />
             <Route path='/counter' element={<CounterPage />} />
             <Route path='/todo' element={<ToDoPage />} />
             <Route path='*' element={<NotFound />} />
