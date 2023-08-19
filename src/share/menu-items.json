@@ -14,12 +14,18 @@
   },
   {
     "id": "4",
+    "text": "Calendar",
+    "link": "/calendar",
+    "private": true
+  },
+  {
+    "id": "5",
     "text": "Counter",
     "link": "/counter",
     "private": true
   },
   {
-    "id": "5",
+    "id": "6",
     "text": "ToDo",
     "link": "/todo",
     "private": true
